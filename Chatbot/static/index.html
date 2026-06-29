@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medicare DME Policy Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; height: 100vh; overflow: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Markdown prose inside assistant messages */
+    .prose h1,.prose h2,.prose h3,.prose h4 { font-weight:600; margin:0.7em 0 0.3em; }
+    .prose h1 { font-size:1.25rem; } .prose h2 { font-size:1.12rem; } .prose h3 { font-size:1.02rem; }
+    .prose p { margin:0.4em 0; }
+    .prose ul,.prose ol { margin:0.4em 0 0.4em 1.4em; }
+    .prose li { margin:0.15em 0; }
+    .prose strong { font-weight:600; }
+    .prose code { background:#f1f5f9; padding:1px 5px; border-radius:3px; font-size:0.88em; }
+    .prose table { border-collapse:collapse; margin:0.6em 0; width:100%; font-size:0.9em; }
+    .prose th,
+    .prose td { border:1px solid #e2e8f0; padding:0.35rem 0.6rem; text-align:left; }
+    .prose th { background:#f8fafc; font-weight:600; }
+
+    /* Typing dots */
+    .dot { width:7px; height:7px; border-radius:50%; background:#94a3b8; animation:bounce 1.4s infinite ease-in-out; }
+    .dot:nth-child(1) { animation-delay:-0.32s; }
+    .dot:nth-child(2) { animation-delay:-0.16s; }
+    @keyframes bounce { 0%,80%,100%{transform:scale(0)} 40%{transform:scale(1)} }
+
+    /* Source card hover */
+    .source-card { transition: border-color 0.15s, box-shadow 0.15s; }
+    .source-card:hover { border-color:#3b82f6; box-shadow:0 0 0 1px #3b82f640; }
+
+    /* Fade-in animation */
+    .fade-in { animation: fadeIn 0.25s ease-out; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  </style>
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-800 flex h-screen">
+
+  <!-- ── SIDEBAR ──────────────────────────────────────────────── -->
+  <aside id="sidebar" class="w-72 bg-white border-r border-gray-200 flex flex-col flex-shrink-0">
+    <!-- Header -->
+    <div class="p-5 border-b border-gray-100">
+      <h1 class="text-lg font-bold text-gray-900">Medicare DME<br/>Policy Assistant</h1>
+      <p class="text-xs text-gray-400 mt-1">Cotiviti POC &middot; v2.0</p>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-5">
+      <!-- API Key -->
+      <div id="apiKeySection">
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Groq API Key</label>
+        <input id="apiKeyInput" type="password" placeholder="gsk_..."
+               class="mt-1.5 w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" />
+        <a href="https://console.groq.com/keys" target="_blank"
+           class="text-xs text-brand-600 hover:underline mt-1 inline-block">Get a free key &rarr;</a>
+      </div>
+
+      <!-- Knowledge Base -->
+      <div>
+        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Knowledge Base</h3>
+        <div id="kbList" class="space-y-1 text-sm text-gray-600">Loading...</div>
+      </div>
+
+      <!-- Pipeline -->
+      <div>
+        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">RAG Pipeline</h3>
+        <ol class="text-xs text-gray-500 space-y-1 list-decimal list-inside">
+          <li>Guardrails &amp; topic scoping</li>
+          <li>Query classification</li>
+          <li>BM25 keyword search</li>
+          <li>FAISS semantic search</li>
+          <li>Reciprocal Rank Fusion</li>
+          <li>Cross-encoder re-ranking</li>
+          <li>Groq LLM generation</li>
+          <li>Confidence scoring</li>
+        </ol>
+      </div>
+
+      <!-- Models -->
+      <div>
+        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Models</h3>
+        <div id="modelsList" class="text-xs text-gray-500 space-y-0.5">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Clear button -->
+    <div class="p-4 border-t border-gray-100">
+      <button onclick="clearChat()"
+              class="w-full py-2 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition">
+        Clear Chat
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN AREA ────────────────────────────────────────────── -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <!-- Top bar -->
+    <header class="h-14 border-b border-gray-200 bg-white flex items-center px-6 flex-shrink-0">
+      <button onclick="document.getElementById('sidebar').classList.toggle('hidden')"
+              class="mr-3 p-1.5 rounded hover:bg-gray-100 lg:hidden">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <h2 class="text-sm font-semibold text-gray-700">Medicare Glucose Monitor Coverage Q&amp;A</h2>
+      <span class="ml-auto text-xs text-gray-400" id="statusBadge">Connecting...</span>
+    </header>
+
+    <!-- Messages -->
+    <div id="messages" class="flex-1 overflow-y-auto px-4 md:px-8 py-6 space-y-4">
+      <!-- Welcome -->
+      <div id="welcome" class="max-w-2xl mx-auto text-center py-12">
+        <div class="text-4xl mb-4">&#x1F3E5;</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-2">Medicare DME Policy Assistant</h2>
+        <p class="text-gray-500 text-sm mb-8">
+          Ask questions about BGM/CGM coverage criteria, billing codes,<br/>
+          documentation requirements, and supplier guidelines.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-xl mx-auto">
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            What are the 5 initial coverage criteria for a CGM?
+          </button>
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            How many test strips are covered for insulin vs non-insulin patients?
+          </button>
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            What modifiers (CG, KF, KS, KX) are required on CGM claims?
+          </button>
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            What must a Standard Written Order (SWO) contain?
+          </button>
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            Difference between adjunctive and non-adjunctive CGMs?
+          </button>
+          <button onclick="askSuggestion(this)" class="suggestion-btn text-left px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-brand-500 hover:bg-brand-50 transition">
+            What are the refill documentation requirements for DMEPOS?
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input bar -->
+    <div class="border-t border-gray-200 bg-white px-4 md:px-8 py-4 flex-shrink-0">
+      <form id="chatForm" class="max-w-2xl mx-auto flex gap-2">
+        <input id="queryInput" type="text" autocomplete="off"
+               placeholder="Ask about Medicare glucose monitor coverage..."
+               class="flex-1 px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" />
+        <button type="submit" id="sendBtn"
+                class="px-5 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium hover:bg-brand-700 disabled:opacity-40 disabled:cursor-not-allowed transition">
+          Send
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ── JAVASCRIPT ───────────────────────────────────────────── -->
+  <script>
+    const messagesEl = document.getElementById('messages');
+    const welcomeEl  = document.getElementById('welcome');
+    const form       = document.getElementById('chatForm');
+    const input      = document.getElementById('queryInput');
+    const sendBtn    = document.getElementById('sendBtn');
+    const apiInput   = document.getElementById('apiKeyInput');
+
+    let chatHistory = [];
+
+    // Restore API key from localStorage
+    const savedKey = localStorage.getItem('groq_api_key');
+    if (savedKey) apiInput.value = savedKey;
+    apiInput.addEventListener('change', () => {
+      localStorage.setItem('groq_api_key', apiInput.value);
+    });
+
+    // Flag: server has .env key, so sidebar input is optional
+    let serverHasKey = false;
+
+    // Load health info on start
+    async function loadHealth() {
+      try {
+        const r = await fetch('/api/health');
+        const d = await r.json();
+        document.getElementById('statusBadge').textContent =
+          d.status === 'ready' ? `${d.total_chunks} passages indexed` : 'Loading...';
+        document.getElementById('statusBadge').className =
+          'ml-auto text-xs ' + (d.status === 'ready' ? 'text-green-600' : 'text-amber-500');
+
+        if (d.has_env_key) {
+          serverHasKey = true;
+          document.getElementById('apiKeySection').innerHTML = `
+            <div class="flex items-center gap-2 px-3 py-2 bg-green-50 border border-green-200 rounded-lg">
+              <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
+              <span class="text-xs text-green-700 font-medium">API key loaded from server</span>
+            </div>`;
+        }
+
+        // KB list
+        const kbEl = document.getElementById('kbList');
+        kbEl.innerHTML = '';
+        const docs = [
+          'LCD L33822 – Glucose Monitors',
+          'Policy Article A52464',
+          'Standard Documentation A55426'
+        ];
+        docs.forEach(name => {
+          kbEl.innerHTML += `<div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
+            <span class="truncate">${name}</span>
+          </div>`;
+        });
+
+        // Models
+        if (d.models) {
+          const ml = document.getElementById('modelsList');
+          ml.innerHTML = `
+            <div><span class="text-gray-400">Embed:</span> ${d.models.embeddings}</div>
+            <div><span class="text-gray-400">Rerank:</span> ${d.models.reranker}</div>
+            <div><span class="text-gray-400">LLM:</span> ${d.models.llm}</div>`;
+        }
+      } catch { /* server not ready */ }
+    }
+    loadHealth();
+
+    // ── SEND MESSAGE ──
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const query = input.value.trim();
+      if (!query) return;
+      await sendMessage(query);
+    });
+
+    function askSuggestion(btn) {
+      sendMessage(btn.textContent.trim());
+    }
+
+    async function sendMessage(query) {
+      const apiKey = apiInput.value.trim();
+      if (!apiKey && !serverHasKey) {
+        alert('Please enter your Groq API key in the sidebar.');
+        apiInput.focus();
+        return;
+      }
+
+      // Hide welcome
+      welcomeEl.style.display = 'none';
+
+      // Add user message
+      appendMessage('user', query);
+      chatHistory.push({ role: 'user', content: query });
+      input.value = '';
+      sendBtn.disabled = true;
+
+      // Typing indicator
+      const typingEl = showTyping();
+
+      try {
+        const resp = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query, api_key: apiKey, history: chatHistory.slice(0, -1) }),
+        });
+        const data = await resp.json();
+        typingEl.remove();
+
+        if (data.error) {
+          appendMessage('assistant', data.error, null, null, null, true);
+          return;
+        }
+
+        appendMessage('assistant', data.answer, data.sources, data.query_type, data.confidence, false, data.timing);
+        chatHistory.push({ role: 'assistant', content: data.answer });
+
+      } catch (err) {
+        typingEl.remove();
+        appendMessage('assistant', `Network error: ${err.message}`, null, null, null, true);
+      } finally {
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    }
+
+    // ── RENDER MESSAGE ──
+    function appendMessage(role, content, sources, queryType, confidence, isError, timing) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'max-w-2xl mx-auto fade-in';
+
+      if (role === 'user') {
+        wrapper.innerHTML = `
+          <div class="flex justify-end">
+            <div class="bg-brand-600 text-white px-4 py-2.5 rounded-2xl rounded-br-md max-w-[80%] text-sm leading-relaxed">
+              ${escapeHtml(content)}
+            </div>
+          </div>`;
+      } else {
+        const rendered = isError
+          ? `<div class="text-red-600 text-sm">${escapeHtml(content)}</div>`
+          : `<div class="prose text-sm text-gray-800 leading-relaxed">${renderMd(content)}</div>`;
+
+        let metaHtml = '';
+        if (queryType && confidence) {
+          const confColors = { green:'#059669', orange:'#d97706', red:'#ef4444' };
+          const confBg = { green:'#ecfdf5', orange:'#fffbeb', red:'#fef2f2' };
+          metaHtml = `
+            <div class="flex flex-wrap items-center gap-2 mt-3">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-medium text-white" style="background:${queryType.color}">${queryType.label}</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-medium" style="background:${confBg[confidence.color]};color:${confColors[confidence.color]}">
+                Confidence: ${confidence.pct || confidence.score + '%'}
+              </span>
+              ${timing ? `<span class="text-xs text-gray-400">Retrieval: ${timing.retrieval_s}s &middot; Generation: ${timing.generation_s}s</span>` : ''}
+            </div>`;
+        }
+
+        let sourcesHtml = '';
+        if (sources && sources.length) {
+          const srcCards = sources.map(s => `
+            <div class="source-card border border-gray-200 rounded-lg p-3 text-xs">
+              <div class="font-semibold text-gray-700">${escapeHtml(s.source)}</div>
+              ${s.section ? `<div class="text-gray-400 mb-1">Section: ${escapeHtml(s.section)}</div>` : ''}
+              <div class="text-gray-500 leading-relaxed">${escapeHtml(s.text.slice(0, 350))}${s.text.length > 350 ? '...' : ''}</div>
+              <div class="mt-1 text-gray-400">Re-rank score: ${s.score.toFixed(4)}</div>
+            </div>`).join('');
+
+          sourcesHtml = `
+            <details class="mt-3">
+              <summary class="text-xs text-brand-600 cursor-pointer hover:text-brand-700 font-medium">
+                View ${sources.length} source references
+              </summary>
+              <div class="mt-2 space-y-2">${srcCards}</div>
+            </details>`;
+        }
+
+        let warningHtml = '';
+        if (confidence && confidence.level === 'low') {
+          warningHtml = `
+            <div class="mt-3 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-700">
+              Low confidence — the retrieved passages may not fully cover this question. Try rephrasing for better results.
+            </div>`;
+        }
+
+        wrapper.innerHTML = `
+          <div class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">A</div>
+            <div class="flex-1 min-w-0">
+              ${rendered}
+              ${metaHtml}
+              ${warningHtml}
+              ${sourcesHtml}
+            </div>
+          </div>`;
+      }
+
+      messagesEl.appendChild(wrapper);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // ── TYPING INDICATOR ──
+    function showTyping() {
+      const el = document.createElement('div');
+      el.className = 'max-w-2xl mx-auto fade-in';
+      el.id = 'typing';
+      el.innerHTML = `
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center flex-shrink-0 text-xs font-bold">A</div>
+          <div class="flex items-center gap-1.5 px-4 py-3 bg-gray-100 rounded-2xl rounded-bl-md">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>`;
+      messagesEl.appendChild(el);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return el;
+    }
+
+    // ── CLEAR ──
+    function clearChat() {
+      chatHistory = [];
+      messagesEl.querySelectorAll('.fade-in').forEach(el => el.remove());
+      welcomeEl.style.display = '';
+    }
+
+    // ── HELPERS ──
+    function escapeHtml(t) {
+      const d = document.createElement('div');
+      d.textContent = t;
+      return d.innerHTML;
+    }
+    function renderMd(t) {
+      return DOMPurify.sanitize(marked.parse(t || ''));
+    }
+  </script>
+</body>
+</html>
