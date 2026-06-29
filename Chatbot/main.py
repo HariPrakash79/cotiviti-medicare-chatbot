@@ -77,26 +77,34 @@ INJECTION_PATTERNS = [
 ]
 
 TOPIC_KEYWORDS = [
-    "medicare", "medicaid", "cms", "coverage", "glucose", "monitor",
+    "medicare", "medicaid", "cms", "coverage", "covered", "glucose", "monitor",
     "bgm", "cgm", "diabetes", "diabetic", "insulin", "hcpcs", "icd",
     "dme", "dmepos", "supplier", "beneficiary", "claim", "billing",
     "hcpcs code", "icd code", "modifier", "lancet", "test strip",
     "prescription", "swo", "wopd", "pod", "medical necessity",
-    "reasonable", "lcd", "policy", "article", "documentation",
+    "reasonable", "necessary", "lcd", "policy", "article", "documentation",
     "refill", "delivery", "equipment", "supply", "allowance",
     "continuous", "adjunctive", "blood", "a4238", "a4239", "a4253",
-    "e2102", "e2103", "e0607", "face-to-face", "telehealth",
+    "a4259", "a4258", "a4257", "a4256", "a4271", "a4250",
+    "a4244", "a4245", "a9270", "a9275",
+    "e2102", "e2103", "e2100", "e2101", "e2104", "e0607", "e0620",
+    "face-to-face", "telehealth",
     "practitioner", "hypoglycemia", "glycemic", "sensor", "transmitter",
     "strip", "medical", "health", "patient", "clinical",
     "dexterity", "impairment", "visual", "acuity", "spring",
     "cartridge", "battery", "receiver", "replacement", "repair",
+    "dispensing", "utilization", "denied", "non-covered",
+    "maintenance", "routine", "laser", "piercing", "device",
+    "powered", "disposable",
 ]
 
 OFF_TOPIC_SIGNALS = [
     "python", "javascript", "java ", "calculator", "recipe",
     "weather", "movie", "song", "game", "sport", "stock",
     "write me", "generate code", "homework", "essay",
-    "translate", "summarize this text",
+    "translate", "summarize this text", "capital of",
+    "cook", "restaurant", "travel", "vacation",
+    "who is the president", "tell me a joke", "write a poem",
 ]
 
 

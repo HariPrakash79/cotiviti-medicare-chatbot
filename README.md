@@ -94,10 +94,10 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## Testing
 
-A 50-question test suite validates answer accuracy and citation correctness across all policy categories.
+A 55-question test suite validates answer accuracy and citation correctness across all policy categories, including 6 out-of-context guardrail tests.
 
 ```bash
-python run_tests.py              # run all 50 questions
+python run_tests.py              # run all 55 questions
 python run_tests.py --ids 1 5 9  # run specific questions
 ```
 

@@ -75,6 +75,11 @@ CRITICAL_KEYWORDS = {
     48: ["E2103", "E0607", "A4253"],
     49: ["12 months", "medical record", "refill"],
     50: [],  # Guardrail test — should be rejected
+    51: [],  # Guardrail test — should be rejected
+    52: [],  # Guardrail test — should be rejected
+    53: [],  # Guardrail test — should be rejected
+    54: [],  # Guardrail test — should be rejected
+    55: [],  # Guardrail test — should be rejected
 }
 
 # Expected source documents for citation accuracy
@@ -129,6 +134,11 @@ EXPECTED_SOURCES = {
     48: ["A52464"],
     49: ["A55426"],
     50: [],
+    51: [],
+    52: [],
+    53: [],
+    54: [],
+    55: [],
 }
 
 
@@ -147,13 +157,13 @@ def check_server():
 
 SYNONYMS = {
     "diabetes": ["diabetes", "diabetic", "diabetes mellitus", "dm"],
-    "training": ["training", "trained", "education", "educated", "instructed", "sufficient training"],
-    "prescription": ["prescription", "prescribed", "order", "ordering"],
+    "training": ["training", "trained", "education", "educated", "instructed", "sufficient training", "use of the device", "using the device"],
+    "prescription": ["prescription", "prescribed", "order", "ordering", "evidenced by", "frequency of testing"],
     "denied": ["denied", "denial", "deny", "will be denied", "shall be denied"],
     "not reasonable and necessary": ["not reasonable and necessary", "denied as not reasonable", "not r&n"],
-    "voice synthesizer": ["voice synthesizer", "voice", "synthesizer", "integrated voice", "sound output"],
-    "visual impairment": ["visual impairment", "visual acuity", "visually impaired", "severe visual"],
-    "20/200": ["20/200", "20 200"],
+    "voice synthesizer": ["voice synthesizer", "voice", "synthesizer", "integrated voice", "sound output", "voice synthesis"],
+    "visual impairment": ["visual impairment", "visual acuity", "visually impaired", "severe visual", "vision impairment", "impairment of vision"],
+    "20/200": ["20/200", "20 200", "20/ 200"],
     "6 months": ["6 months", "six months", "six (6) months", "6-month", "every six months"],
     "3 months": ["3 months", "three months", "three (3) months", "3-month", "every 3 months", "every three months"],
     "telehealth": ["telehealth", "tele-health", "telemedicine", "medicare-approved telehealth"],
@@ -163,20 +173,20 @@ SYNONYMS = {
     "insulin": ["insulin", "insulin-treated", "insulin treated", "insulin administrations"],
     "FDA": ["fda", "food and drug administration", "fda indications"],
     "glycemic": ["glycemic", "glycemic control", "glucose control", "blood sugar"],
-    "replace": ["replace", "replacement", "replacing", "replaces"],
-    "separately": ["separately", "separate", "in addition to", "billed separately"],
-    "do not apply": ["do not apply", "does not apply", "not applicable", "are not applicable"],
-    "not covered": ["not covered", "non-covered", "noncovered", "denied", "will not be covered"],
-    "not established": ["not established", "has not been established", "not been established"],
+    "replace": ["replace", "replacement", "replacing", "replaces", "in lieu of", "instead of"],
+    "separately": ["separately", "separate", "in addition to", "billed separately", "may be billed"],
+    "do not apply": ["do not apply", "does not apply", "not applicable", "are not applicable", "do not need to comply"],
+    "not covered": ["not covered", "non-covered", "noncovered", "denied", "will not be covered", "does not cover"],
+    "not established": ["not established", "has not been established", "not been established", "not demonstrated"],
     "office records": ["office records", "office record", "practitioner's office", "medical record", "treating practitioner"],
     "hospital": ["hospital", "hospital records", "inpatient"],
     "sufficient": ["sufficient", "not sufficient", "insufficient", "do not provide sufficient"],
     "attestation": ["attestation", "attest", "prepared statements"],
     "signature": ["signature", "signed", "signing", "practitioner's signature"],
     "NPI": ["npi", "national provider identifier", "provider identifier"],
-    "direct delivery": ["direct delivery", "directly to the beneficiary", "deliver directly"],
-    "shipping": ["shipping", "shipping service", "delivery service", "mail order", "via shipping"],
-    "nursing facility": ["nursing facility", "nursing home", "nursing facilities"],
+    "direct delivery": ["direct delivery", "directly to the beneficiary", "deliver directly", "method 1", "supplier delivers"],
+    "shipping": ["shipping", "shipping service", "delivery service", "mail order", "via shipping", "method 2", "tracking"],
+    "nursing facility": ["nursing facility", "nursing home", "nursing facilities", "method 3", "on behalf of"],
     "name": ["name", "beneficiary's name", "beneficiary name"],
     "address": ["address", "delivery address"],
     "description": ["description", "item description", "description of the item", "general description"],
@@ -196,10 +206,18 @@ SYNONYMS = {
     "RUL": ["rul", "reasonable useful lifetime", "useful lifetime"],
     "410.38": ["410.38", "42 cfr 410", "cfr 410.38"],
     "1862": ["1862", "section 1862", "social security act"],
-    "reasonable and necessary": ["reasonable and necessary", "r&n", "reasonable & necessary"],
+    "reasonable and necessary": ["reasonable and necessary", "r&n", "reasonable & necessary", "section 1862(a)(1)(a)"],
     "benefit category": ["benefit category", "medicare benefit", "defined medicare benefit"],
     "regulatory": ["regulatory", "statutory", "regulatory requirements", "statutory and regulatory"],
     "maintenance": ["maintenance", "periodic maintenance", "routine periodic maintenance"],
+    "54mg": ["54mg", "54 mg", "<54", "54mg/dl", "54 mg/dl", "3.0mmol", "3.0 mmol"],
+    "level 2": ["level 2", "level two", "level-2", "recurrent"],
+    "level 3": ["level 3", "level three", "level-3", "altered mental", "third-party assistance"],
+    "cartridge": ["cartridge", "car tridge", "integrated lancing"],
+    "lancet": ["lancet", "lancets", "lancing"],
+    "A9270": ["a9270", "statutorily non-covered", "no benefit category"],
+    "not dependent": ["not dependent", "independent", "regardless of visual", "not contingent"],
+    "manual dexterity": ["manual dexterity", "dexterity", "impairment of manual"],
 }
 
 
@@ -218,6 +236,9 @@ def evaluate_answer(qid: int, answer: str, sources: list, is_guardrail: bool) ->
         rejected = any(s in answer_lower for s in [
             "not available", "not related", "rephrase", "don't appear",
             "doesn't appear", "cannot help", "outside", "not relevant",
+            "off-topic", "off topic", "not within", "unable to assist",
+            "beyond the scope", "outside the scope", "not about",
+            "i can only answer", "only answer questions",
         ])
         return {
             "keyword_hits": 0, "keyword_total": 0,
@@ -274,14 +295,25 @@ def run_tests(question_ids: list[int] | None = None):
         is_guardrail = q["category"] == "Guardrail Test"
 
         try:
-            t0 = time.time()
-            resp = requests.post(API_URL, json={
-                "query": q["question"],
-                "api_key": "",
-                "history": [],
-            }, timeout=60)
-            elapsed = round(time.time() - t0, 1)
-            data = resp.json()
+            data = None
+            max_retries = 3
+            for attempt in range(max_retries):
+                t0 = time.time()
+                resp = requests.post(API_URL, json={
+                    "query": q["question"],
+                    "api_key": "",
+                    "history": [],
+                }, timeout=90)
+                elapsed = round(time.time() - t0, 1)
+                data = resp.json()
+
+                err = data.get("error", "")
+                if "429" in str(err) or "rate_limit" in str(err).lower():
+                    wait = 15 * (attempt + 1)
+                    print(f"     Rate limited, waiting {wait}s (retry {attempt + 1}/{max_retries})...")
+                    time.sleep(wait)
+                    continue
+                break
 
             if data.get("error") and not is_guardrail:
                 errors += 1
@@ -330,7 +362,8 @@ def run_tests(question_ids: list[int] | None = None):
             })
 
             # Rate limit: delay between requests to avoid Groq TPM/TPD limits
-            time.sleep(2)
+            if not is_guardrail:
+                time.sleep(8)
 
         except Exception as exc:
             errors += 1

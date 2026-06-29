@@ -77,7 +77,7 @@ class Guardrails:
     ]
 
     TOPIC_KEYWORDS = [
-        "medicare", "medicaid", "cms", "coverage", "glucose", "monitor",
+        "medicare", "medicaid", "cms", "coverage", "covered", "glucose", "monitor",
         "bgm", "cgm", "diabetes", "diabetic", "insulin", "hcpcs", "icd",
         "dme", "dmepos", "supplier", "beneficiary", "claim", "billing",
         "code", "modifier", "lancet", "test strip", "prescription",
@@ -85,10 +85,15 @@ class Guardrails:
         "necessary", "lcd", "policy", "article", "documentation",
         "refill", "delivery", "equipment", "supply", "allowance",
         "continuous", "adjunctive", "non-adjunctive", "blood",
-        "a4238", "a4239", "a4253", "a4259", "e2102", "e2103",
-        "e0607", "e2100", "e2101", "e2104", "a4271",
+        "a4238", "a4239", "a4253", "a4259", "a4258", "a4257",
+        "a4256", "a4271", "a4250", "a4244", "a4245", "a9270", "a9275",
+        "e2102", "e2103", "e0607", "e2100", "e2101", "e2104", "e0620",
         "face-to-face", "telehealth", "practitioner", "physician",
         "hypoglycemia", "glycemic", "treatment", "sensor", "transmitter",
+        "dexterity", "impairment", "visual", "acuity", "spring",
+        "dispensing", "utilization", "denied", "non-covered",
+        "maintenance", "routine", "laser", "piercing", "device",
+        "powered", "disposable",
     ]
 
     @classmethod
