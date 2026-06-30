@@ -299,11 +299,20 @@ def run_tests(question_ids: list[int] | None = None):
             max_retries = 3
             for attempt in range(max_retries):
                 t0 = time.time()
-                resp = requests.post(API_URL, json={
-                    "query": q["question"],
-                    "api_key": "",
-                    "history": [],
-                }, timeout=90)
+                try:
+                    resp = requests.post(API_URL, json={
+                        "query": q["question"],
+                        "api_key": "",
+                        "history": [],
+                    }, timeout=90)
+                except requests.ConnectionError:
+                    print(f"\n  ABORT: Cannot reach server at {API_URL}.")
+                    print("  Start the server with: python main.py\n")
+                    sys.exit(1)
+                except requests.Timeout:
+                    print(f"\n  ABORT: Server did not respond within 90s on question {qid}.")
+                    print("  The server may have crashed or be overloaded.\n")
+                    sys.exit(1)
                 elapsed = round(time.time() - t0, 1)
                 data = resp.json()
 
@@ -361,9 +370,9 @@ def run_tests(question_ids: list[int] | None = None):
                 "status": status,
             })
 
-            # Rate limit: delay between requests to avoid Groq TPM/TPD limits
+            # Small delay to avoid saturating the local server
             if not is_guardrail:
-                time.sleep(8)
+                time.sleep(2)
 
         except Exception as exc:
             errors += 1

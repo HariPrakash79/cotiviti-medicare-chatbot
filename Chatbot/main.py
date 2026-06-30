@@ -1,11 +1,11 @@
 """
 Medicare DME Policy Assistant v2.0
-FastAPI backend with hybrid RAG pipeline, guardrails, and Groq LLM.
+FastAPI backend with hybrid RAG pipeline, guardrails, and Gemini LLM.
 
 Architecture:
     Query -> Guardrails -> Classify -> Hybrid Retrieve (BM25+FAISS)
           -> RRF Fusion -> Cross-Encoder Rerank -> Conversation Context
-          -> Groq LLM (Llama 3.3 70B) -> Confidence Score -> Response
+          -> Gemini 2.5 Flash -> Confidence Score -> Response
 """
 
 from __future__ import annotations
@@ -27,7 +27,8 @@ from PyPDF2 import PdfReader
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from rank_bm25 import BM25Okapi
 import faiss
-from groq import Groq
+from google import genai
+from google.genai import types as genai_types
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CONFIGURATION
@@ -53,7 +54,7 @@ RERANK_TOP_K = 8
 
 EMBED_MODEL_NAME = "all-MiniLM-L6-v2"
 CROSS_ENCODER_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 load_dotenv(BASE_DIR / ".env")
 
@@ -395,7 +396,7 @@ TYPE_INSTRUCTIONS = {
 
 def generate(query: str, sources: list[dict], api_key: str,
              query_type: str, conv_ctx: str) -> str:
-    client = Groq(api_key=api_key)
+    client = genai.Client(api_key=api_key)
 
     ctx_block = "\n\n---\n\n".join(
         f"[Source: {s['source']} | Section: {s.get('section', 'N/A')}]\n{s['text']}"
@@ -404,18 +405,16 @@ def generate(query: str, sources: list[dict], api_key: str,
     type_instr = TYPE_INSTRUCTIONS.get(query_type, "")
     conv_block = f"\nRECENT CONVERSATION:\n{conv_ctx}\n" if conv_ctx else ""
 
-    messages = [
-        {"role": "system", "content": f"{BASE_PROMPT}{type_instr}"},
-        {"role": "user", "content": f"POLICY EXCERPTS:\n{ctx_block}\n{conv_block}\nQUESTION: {query}"},
-    ]
-
-    resp = client.chat.completions.create(
-        model=GROQ_MODEL,
-        messages=messages,
-        temperature=0.2,
-        max_tokens=2048,
+    resp = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=f"POLICY EXCERPTS:\n{ctx_block}\n{conv_block}\nQUESTION: {query}",
+        config=genai_types.GenerateContentConfig(
+            system_instruction=f"{BASE_PROMPT}{type_instr}",
+            temperature=0.2,
+            max_output_tokens=2048,
+        ),
     )
-    return resp.choices[0].message.content
+    return resp.text
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -474,11 +473,11 @@ def health():
         "status": "ready" if state.get("chunks") else "loading",
         "documents_loaded": state.get("docs_loaded", 0),
         "total_chunks": len(state.get("chunks", [])),
-        "has_env_key": bool(os.getenv("GROQ_API_KEY")),
+        "has_env_key": bool(os.getenv("GEMINI_API_KEY")),
         "models": {
             "embeddings": EMBED_MODEL_NAME,
             "reranker": CROSS_ENCODER_NAME,
-            "llm": GROQ_MODEL,
+            "llm": GEMINI_MODEL,
         },
     }
 
@@ -488,7 +487,7 @@ def chat(req: ChatRequest):
     t_start = time.time()
 
     # Resolve API key: request > environment
-    api_key = req.api_key or os.getenv("GROQ_API_KEY", "")
+    api_key = req.api_key or os.getenv("GEMINI_API_KEY", "")
     if not api_key:
         return {"error": "No API key provided. Set it in the sidebar or in the .env file.", "guardrail": "auth"}
 

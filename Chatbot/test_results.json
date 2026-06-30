@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-28 20:52:45",
+  "timestamp": "2026-06-30 10:38:24",
   "summary": {
-    "total": 50,
-    "passed": 37,
-    "failed": 10,
-    "errors": 3,
-    "avg_keyword_accuracy": 73.2,
-    "avg_citation_accuracy": 94.0
+    "total": 55,
+    "passed": 44,
+    "failed": 11,
+    "errors": 0,
+    "avg_keyword_accuracy": 80.1,
+    "avg_citation_accuracy": 100.0
   },
   "results": [
     {
@@ -14,22 +14,21 @@
       "category": "BGM Coverage",
       "question": "What are the two basic coverage criteria for home blood glucose monitors?",
       "expected": "1) The beneficiary has diabetes (refer to ICD-10 code list in Policy Article), and 2) the treating practitioner has concluded the beneficiary has sufficient training using the device, evidenced by a prescription for supplies and frequency of testing.",
-      "actual_answer": "**Basic Coverage Criteria for Home Blood Glucose Monitors (BGM)**\n\nAccording to LCD L33822 – Glucose Monitors, the two basic coverage criteria for home blood glucose monitors are:\n\n1. The beneficiary must have a diagnosis of diabetes mellitus (ICD-10 code E11.x, E12.x, E13.x, E14.x, or E15.x).\n2. The beneficiary must meet the following additional criteria:\n\t* The beneficiary must have a visual impairment (ICD-10 code H53.9x) or\n\t* The beneficiary must have an impairment of manual dexterity (ICD-",
+      "actual_answer": "This information is not available in the loaded policy documents. The provided excerpts state that \"To be eligible for coverage of home blood glucose monitors and related accessories and supplies, the beneficiary must meet both of the following basic criteria (1)-(2)\" (According to LCD L33822), but the specific criteria (1) and (2) are not detailed within the provided text.",
       "confidence": "57%",
-      "elapsed_s": 5.3,
+      "elapsed_s": 7.0,
       "evaluation": {
-        "keyword_hits": 1,
+        "keyword_hits": 0,
         "keyword_total": 3,
-        "keyword_pct": 33.3,
+        "keyword_pct": 0.0,
         "keyword_pass": false,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
-        "matched_keywords": [
-          "diabetes"
-        ],
+        "matched_keywords": [],
         "missed_keywords": [
+          "diabetes",
           "training",
           "prescription"
         ],
@@ -45,9 +44,9 @@
       "category": "BGM Coverage",
       "question": "What happens if basic coverage criteria (1)-(2) are not met for glucose monitors?",
       "expected": "The item(s) will be denied as not reasonable and necessary.",
-      "actual_answer": "**Denial of Coverage**\n\nIf the basic coverage criteria (1)-(2) are not met for glucose monitors, the item(s) will be denied as not reasonable and necessary.\n\n**Source:**\n[Source: LCD L33822 – Glucose Monitors | Section: HOME BL OOD GL UCOSE MONIT ORS (BGM)]\n\n**Criteria:**\n1. The beneficiary has diabetes (Refer to the ICD-10 code list in the LCD-related Policy Article for applicable diagnoses); and,\n2. The beneficiary's treating practitioner has concluded that the beneficiary (or the beneficiary'",
+      "actual_answer": "If the basic coverage criteria (1)-(2) for all glucose monitors and related accessories and supplies are not met, the item(s) will be denied as not reasonable and necessary.\n\nAccording to LCD L33822 – Glucose Monitors:\n\"For all glucose monitors and related accessories and supplies, if the basic coverage criteria (1)-(2) are not met, the item(s) will be denied as not reasonable and necessary.\"",
       "confidence": "35%",
-      "elapsed_s": 30.4,
+      "elapsed_s": 6.7,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 2,
@@ -74,9 +73,9 @@
       "category": "BGM Coverage",
       "question": "What HCPCS codes are used for home blood glucose monitors with special features?",
       "expected": "E2100 (integrated voice synthesizer) and E2101 (integrated lancing/blood sample). They are covered when basic criteria (1)-(2) are met and the treating practitioner certifies a severe visual impairment (20/200 or worse in both eyes).",
-      "actual_answer": "**Home Blood Glucose Monitors with Special Features**\n\nAccording to Policy Article A52464, the following HCPCS codes are used for home blood glucose monitors with special features:\n\n* E0607: HOME BLOOD GLUCOSE MONITOR\n* E2100: CONTINUOUS GLUCOSE MONITOR (CGM)\n* E2101: CONTINUOUS GLUCOSE MONITOR (CGM) WITH REAL-TIME DISPLAY\n* E2102: CONTINUOUS GLUCOSE MONITOR (CGM) SENSOR\n* E2103: CONTINUOUS GLUCOSE MONITOR (CGM) TRANSPONDER\n* E2104: CONTINUOUS GLUCOSE MONITOR (CGM) RECEIVER\n\nThese codes are used",
+      "actual_answer": "This information is not available in the loaded policy documents. The provided excerpts list the following HCPCS codes for blood glucose monitors:\n\n*   **E0607** HOME BLOOD GLUCOSE MONITOR (According to LCD L33822 and Policy Article A52464)\n*   **E2100** (According to Policy Article A52464)\n*   **E2101** (According to Policy Article A52464)\n*   **E2104** (According to Policy Article A52464)\n\nHowever, the policy documents do not provide descriptions for E2100, E2101, or E2104, nor do they specify",
       "confidence": "55%",
-      "elapsed_s": 22.1,
+      "elapsed_s": 8.6,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 5,
@@ -107,25 +106,39 @@
       "category": "BGM Coverage",
       "question": "Can code E2101 be covered for manual dexterity impairments?",
       "expected": "Yes, E2101 is also covered for impairment of manual dexterity when basic criteria (1)-(2) are met and the treating practitioner certifies the impairment is severe enough to require use of this special monitoring system. Coverage for manual dexterity is not dependent upon visual impairment.",
-      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
-      "confidence": "N/A",
-      "elapsed_s": 2.0,
+      "actual_answer": "Yes, HCPCS code E2101 can be covered for beneficiaries with manual dexterity impairments.\n\n### Coverage Criteria for E2101 with Manual Dexterity Impairment\n\nAccording to LCD L33822, code E2101 is covered for those with impairment of manual dexterity when the following criteria are met:\n\n1.  **Basic Coverage Criteria (1)-(2):**\n    1.  The beneficiary has diabetes (refer to the ICD-10 code list in the LCD-related Policy Article for applicable diagnoses).\n    2.  The beneficiary’s treating practit",
+      "confidence": "47%",
+      "elapsed_s": 9.6,
       "evaluation": {
-        "keyword_pct": 0,
-        "citation_pct": 0,
-        "keyword_pass": false,
-        "citation_pass": false
+        "keyword_hits": 3,
+        "keyword_total": 3,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 1,
+        "citation_total": 1,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [
+          "E2101",
+          "manual dexterity",
+          "not dependent"
+        ],
+        "missed_keywords": [],
+        "matched_sources": [
+          "LCD L33822"
+        ],
+        "missed_sources": []
       },
-      "status": "ERROR"
+      "status": "PASS"
     },
     {
       "id": 5,
       "category": "BGM Utilization",
       "question": "How many test strips and lancets are covered for a non-insulin-treated beneficiary under usual utilization?",
       "expected": "Up to 100 test strips and up to 100 lancets every 3 months, if basic coverage criteria (1)-(2) are met.",
-      "actual_answer": "**Usual Utilization for Non-Insulin-Treated Beneficiaries**\n\nAccording to LCD L33822, for a beneficiary who is not currently being treated with insulin administrations, the following quantities are covered under usual utilization:\n\n* Up to 100 test strips (code A4253) every 3 months\n* Up to 100 lancets (code A4259) every 3 months\n\n**Source:**\n[Source: LCD L33822 – Glucose Monitors | Section: HOME BLOOD GLUCOSE MONITORS (BGM)]",
+      "actual_answer": "For a beneficiary who is not currently being treated with insulin administrations, under usual utilization guidelines:\n\n*   Up to **100 test strips (A4253)** and up to **100 lancets (A4259)** are covered every **3 months**.\n\nThis coverage is contingent upon meeting basic coverage criteria (1)-(2) for all home glucose monitors and related accessories and supplies.\n\n(According to LCD L33822 – Glucose Monitors)",
       "confidence": "22%",
-      "elapsed_s": 23.9,
+      "elapsed_s": 7.2,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -153,9 +166,9 @@
       "category": "BGM Utilization",
       "question": "How many test strips and lancets are covered for an insulin-treated beneficiary under usual utilization?",
       "expected": "Up to 300 test strips and up to 300 lancets every 3 months, if basic coverage criteria (1)-(2) are met.",
-      "actual_answer": "**Usual Utilization for Insulin-Treated Beneficiaries**\n\nAccording to LCD L33822, for a beneficiary who is currently being treated with insulin administrations, up to 300 test strips and up to 300 lancets every 3 months are covered.\n\n**Source:** LCD L33822 – Glucose Monitors | Section: HOME BLOOD GLUCOSE MONITORS (BGM)\n\nCriteria (1)-(2) are met.",
+      "actual_answer": "According to LCD L33822 – Glucose Monitors, for a beneficiary who is currently being treated with insulin administrations, up to **300 test strips (A4253)** and up to **300 lancets (A4259)** every **3 months** are covered if basic coverage criteria (1)-(2) are met.",
       "confidence": "23%",
-      "elapsed_s": 42.7,
+      "elapsed_s": 7.9,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -183,9 +196,9 @@
       "category": "BGM Utilization",
       "question": "What are the criteria for high utilization of BGM testing supplies for non-insulin-treated beneficiaries?",
       "expected": "More than 100 test strips and more than 100 lancets every 3 months are covered if: (a) basic criteria (1)-(2) are met, (b) within 6 months prior, the treating practitioner had an in-person or Medicare-approved telehealth visit to evaluate diabetes control and need for specific quantity, and (c) every 6 months the practitioner verifies adherence to the high utilization testing regimen.",
-      "actual_answer": "**High Utilization of BGM Testing Supplies for Non-Insulin-Treated Beneficiaries**\n\nAccording to LCD L33822 – Glucose Monitors, the criteria for high utilization of BGM testing supplies for non-insulin-treated beneficiaries are:\n\n1. **Basic Coverage Criteria**: The beneficiary must meet both of the following basic criteria:\n\t* The beneficiary must have a Medicare-approved telehealth visit with the provider to evaluate their diabetes control and their need for the specific quantity of supplies th",
+      "actual_answer": "For beneficiaries with non-insulin treated diabetes, more than 100 test strips and more than 100 lancets every 3 months are covered if the following criteria are met:\n\n**High Utilization Criteria for Non-Insulin Treated Beneficiaries (BGM)**\n\nAccording to LCD L33822, for a beneficiary who is not currently being treated with insulin administrations, more than 100 test strips and more than 100 lancets every 3 months are covered if criteria (a)–(c) below are met:\n\na.  Basic coverage criteria (1)-(2",
       "confidence": "24%",
-      "elapsed_s": 24.5,
+      "elapsed_s": 9.4,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -214,9 +227,9 @@
       "category": "BGM Utilization",
       "question": "What are the criteria for high utilization of testing supplies for insulin-treated beneficiaries?",
       "expected": "More than 300 test strips and more than 300 lancets every 3 months are covered if criteria (a)-(c) are met: basic criteria, in-person/telehealth visit within 6 months, and every 6 months verification of adherence to high utilization regimen.",
-      "actual_answer": "**High Utilization of Testing Supplies for Insulin-Treated Beneficiaries**\n\nFor insulin-treated beneficiaries, the following criteria apply for high utilization of testing supplies:\n\n1. **Basic Coverage Criteria Met**: The beneficiary must meet the basic coverage criteria for home blood glucose monitors and related accessories and supplies, as follows:\n\t* The beneficiary has diabetes mellitus (refer to the ICD-10 code list in the LCD-related Policy Article for applicable diagnoses).\n\t* The benef",
+      "actual_answer": "According to LCD L33822, for a beneficiary who is currently being treated with insulin administrations, more than 300 test strips and more than 300 lancets every 3 months are covered if the following criteria (a)-(c) are met:\n\n**High Utilization Criteria for Insulin-Treated Beneficiaries:**\n\na. Basic coverage criteria (1)-(2) listed above for all home glucose monitors and related accessories and supplies are met; and,\nb. Within the six (6) months prior to ordering quantities of strips and lancet",
       "confidence": "24%",
-      "elapsed_s": 5.3,
+      "elapsed_s": 7.8,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -244,42 +257,42 @@
       "category": "CGM Coverage",
       "question": "What are the 5 initial coverage criteria for a continuous glucose monitor (CGM)?",
       "expected": "1) Beneficiary has diabetes mellitus, 2) treating practitioner concluded sufficient training using the CGM as evidenced by prescription, 3) CGM prescribed in accordance with FDA indications, 4) CGM is being prescribed to improve glycemic control and beneficiary meets at least one of: (A) insulin-treated, or (B) history of problematic hypoglycemia, and 5) within 6 months prior to ordering, practitioner had an in-person or telehealth visit to evaluate diabetes control.",
-      "actual_answer": "**Initial Coverage Criteria for Continuous Glucose Monitor (CGM)**\n\nAccording to LCD L33822 – Glucose Monitors, the 5 initial coverage criteria for a continuous glucose monitor (CGM) are:\n\n1. The beneficiary has a diagnosis of diabetes mellitus (type 1 or type 2) as documented in the beneficiary's medical record.\n2. The beneficiary has a history of problematic hypoglycemia (low blood glucose) or hypoglycemic unawareness as documented in the beneficiary's medical record.\n3. The beneficiary has a ",
+      "actual_answer": "This information is not available in the loaded policy documents. The provided excerpts refer to the existence of \"initial CGM coverage criteria (1)-(5)\" in the Glucose Monitors LCD (L33822) but do not list the criteria themselves.\n\nAccording to LCD L33822, if any of the initial coverage criteria (1)-(5) are not met, the CGM (HCPCS codes E2102 or E2103) and related supply allowance (HCPCS codes A4238 or A4239) will be denied as not reasonable and necessary.\n\nPolicy Article A52464 states that for",
       "confidence": "45%",
-      "elapsed_s": 40.1,
+      "elapsed_s": 9.0,
       "evaluation": {
-        "keyword_hits": 3,
+        "keyword_hits": 1,
         "keyword_total": 5,
-        "keyword_pct": 60.0,
-        "keyword_pass": true,
+        "keyword_pct": 20.0,
+        "keyword_pass": false,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
         "matched_keywords": [
-          "diabetes",
-          "glycemic",
           "insulin"
         ],
         "missed_keywords": [
+          "diabetes",
           "training",
-          "FDA"
+          "FDA",
+          "glycemic"
         ],
         "matched_sources": [
           "LCD L33822"
         ],
         "missed_sources": []
       },
-      "status": "PASS"
+      "status": "FAIL"
     },
     {
       "id": 10,
       "category": "CGM Coverage",
       "question": "What qualifies as problematic hypoglycemia for CGM coverage criterion 4B?",
       "expected": "Either: recurrent (more than one) level 2 hypoglycemic events (glucose <54mg/dL or 3.0mmol/L) that persist despite multiple attempts to adjust medications and/or modify the treatment plan; OR a history of one level 3 hypoglycemic event (glucose <54mg/dL) characterized by altered mental and/or physical state requiring third-party assistance for treatment.",
-      "actual_answer": "**Problematic Hypoglycemia for CGM Coverage Criterion 4B**\n\nAccording to Policy Article A52464, criterion 4B requires the treating practitioner's medical record to document the beneficiary has a history of problematic hypoglycemia consistent with one of the following pathways:\n\n* [Source: Policy Article A52464 – Glucose Monitor | Section: POLICY SPECIFIC DOCUMENTATION REQUIREMENTS]\n\nHowever, the specific pathways are not listed in the provided excerpts.",
+      "actual_answer": "According to Policy Article A52464, for Continuous Glucose Monitor (CGM) coverage criterion 4B, the treating practitioner’s medical record must document that the beneficiary has a history of problematic hypoglycemia consistent with one of the specified pathways to coverage.\n\nHowever, the provided policy excerpts mention the existence of these pathways but do not describe or list what qualifies as \"problematic hypoglycemia\" or detail the specific pathways themselves.\n\n*   Per Policy Article A5246",
       "confidence": "43%",
-      "elapsed_s": 4.7,
+      "elapsed_s": 7.6,
       "evaluation": {
         "keyword_hits": 1,
         "keyword_total": 4,
@@ -309,39 +322,40 @@
       "category": "CGM Coverage",
       "question": "What is the continued coverage requirement for CGM after initial prescription?",
       "expected": "Every 6 months following the initial prescription, the treating practitioner must conduct an in-person or Medicare-approved telehealth visit with the beneficiary to document adherence to their CGM regimen and diabetes treatment plan.",
-      "actual_answer": "**Continued Coverage Requirement for CGM**\n\nAccording to the policy excerpts, the continued coverage requirement for CGM after initial prescription is as follows:\n\n1. For non-adjunctive CGM devices (code E2103) and the supply allowance (code A4239), the CG modifier must be added to the claim line only if the continued coverage criterion in the Glucose Monitors LCD is met. (Source: Policy Article A52464 – Glucose Monitor | Section: MODIFIERS)\n2. The continued coverage criterion in the Glucose Mon",
+      "actual_answer": "Based on the provided policy excerpts, the specific numbered continued coverage criterion for Continuous Glucose Monitors (CGM) is not fully detailed. However, the policy does provide information regarding the requirements and conditions for continued coverage.\n\n### General Continued Coverage Requirements for CGM\n\n*   For continued coverage of non-adjunctive CGM devices (HCPCS code E2103) and the supply allowance (HCPCS code A4239), the CG modifier must be added to the claim line only if the con",
       "confidence": "12%",
-      "elapsed_s": 34.0,
+      "elapsed_s": 13.2,
       "evaluation": {
-        "keyword_hits": 0,
+        "keyword_hits": 2,
         "keyword_total": 3,
-        "keyword_pct": 0.0,
-        "keyword_pass": false,
+        "keyword_pct": 66.7,
+        "keyword_pass": true,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
-        "matched_keywords": [],
-        "missed_keywords": [
-          "6 months",
+        "matched_keywords": [
           "in-person",
           "adherence"
+        ],
+        "missed_keywords": [
+          "6 months"
         ],
         "matched_sources": [
           "LCD L33822"
         ],
         "missed_sources": []
       },
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "id": 12,
       "category": "CGM Coverage",
       "question": "What is the difference between adjunctive and non-adjunctive CGMs?",
       "expected": "A non-adjunctive CGM can be used to make treatment decisions without the need for a stand-alone BGM to confirm testing results. An adjunctive CGM requires the user to verify glucose levels or trends displayed on the CGM with a BGM prior to making treatment decisions. As of February 28, 2022, CMS determined both types may be classified as DME.",
-      "actual_answer": "**Differences between Adjunctive and Non-Adjunctive CGMs**\n\nAccording to Policy Article A52464 – Glucose Monitor | Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n\n* **Non-Adjunctive CGMs**: Can be used to make treatment decisions without the need for a standalone BGM to confirm testing results.\n* **Adjunctive CGMs**: Require the user to verify their glucose levels or trends displayed on a CGM with a BGM prior to making treatment decisions.\n\n**Source:** Policy Article A52464 – Glucose",
+      "actual_answer": "According to the provided policy excerpts, the difference between adjunctive and non-adjunctive Continuous Glucose Monitors (CGMs) primarily lies in their requirement for a separate Blood Glucose Monitor (BGM) to confirm results before making treatment decisions, as well as their associated supply allowances.\n\nHere are the key distinctions:\n\n1.  **Definition and Use:**\n    *   **Non-adjunctive CGM:** A non-adjunctive CGM can be used to make treatment decisions without the need for a stand-alone ",
       "confidence": "19%",
-      "elapsed_s": 8.1,
+      "elapsed_s": 11.1,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -370,9 +384,9 @@
       "category": "CGM Billing",
       "question": "What HCPCS codes are used for CGM devices?",
       "expected": "E2102 for adjunctive, non-implanted CGM monitor or receiver; E2103 for non-adjunctive, non-implanted CGM monitor or receiver.",
-      "actual_answer": "**HCPCS Codes for CGM Devices**\n\nAccording to the policy excerpts, the following HCPCS codes are used for CGM devices:\n\n* E2102: Continuous glucose monitoring receiver\n* E2103: Continuous glucose monitoring transmitter\n\nNote that these codes are subject to review and verification by the Pricer, Data Analysis and Coding (PDAC) contractor and must be listed on the Product Classification List (PCL).",
+      "actual_answer": "According to the provided policy excerpts, the HCPCS codes used for Continuous Glucose Monitor (CGM) devices are:\n\n*   **E2102** (Continuous glucose monitor, includes all supplies and accessories; not otherwise specified) - *Per LCD L33822, Section: HOME BLOOD GLUCOSE MONITORS (BGM) and Policy Article A52464, Section: MODIFIERS*\n*   **E2103** (Continuous glucose monitor, includes all supplies and accessories; therapeutic) - *Per LCD L33822, Section: (CGM) and Policy Article A52464, Section: MODI",
       "confidence": "60%",
-      "elapsed_s": 39.6,
+      "elapsed_s": 8.4,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 2,
@@ -399,56 +413,71 @@
       "category": "CGM Billing",
       "question": "What are the supply allowance codes for CGMs and how are they billed?",
       "expected": "A4238 for adjunctive CGM supply allowance, A4239 for non-adjunctive CGM supply allowance. Each includes all supplies and accessories, 1 month supply = 1 unit of service. Up to 3 UOS per 90 days may be billed. Billing more than 3 UOS per 90 days will be denied.",
-      "actual_answer": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kw8ag32hf9vvb455jxegqqne` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 2288, Requested 5064. Please try again in 13.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "confidence": "N/A",
-      "elapsed_s": 14.7,
+      "actual_answer": "Here are the supply allowance codes for Continuous Glucose Monitors (CGMs) and their billing instructions, according to the provided policy excerpts:\n\n### Non-Adjunctive CGM Supply Allowance\n\n*   **For claims with dates of service on or after January 1, 2023:**\n    *   The supply allowance must be billed with code **A4239** (SUPPLY ALLOWANCE FOR CONTINUOUS GLUCOSE MONITOR (CGM), INCLUDES ALL SUPPLIES AND ACCESSORIES, 1 MONTH SUPPLY) (Per Policy Article A52464).\n    *   The non-adjunctive CGM dev",
+      "confidence": "65%",
+      "elapsed_s": 12.5,
       "evaluation": {
-        "keyword_pct": 0,
-        "citation_pct": 0,
-        "keyword_pass": false,
-        "citation_pass": false
+        "keyword_hits": 4,
+        "keyword_total": 4,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 2,
+        "citation_total": 2,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [
+          "A4238",
+          "A4239",
+          "3",
+          "90"
+        ],
+        "missed_keywords": [],
+        "matched_sources": [
+          "LCD L33822",
+          "A52464"
+        ],
+        "missed_sources": []
       },
-      "status": "ERROR"
+      "status": "PASS"
     },
     {
       "id": 15,
       "category": "CGM Billing",
       "question": "Can BGM supplies be billed separately when a non-adjunctive CGM is provided?",
       "expected": "No. Non-adjunctive CGM devices replace standard home BGMs. Claims for a BGM and related supplies billed in addition to a non-adjunctive CGM device (E2103) and associated supply allowance (A4239) will be denied.",
-      "actual_answer": "**BGM Supplies Billing Separately with Non-Adjunctive CGM**\n\nAccording to Policy Article A52464, Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n\n* Code A4238 does not include a home BGM and related BGM testing supplies.\n* These items may be billed separately, in addition to code A4238.\n\nAdditionally, Policy Article A52464, Section: CODING GUIDELINES states:\n\n* For non-adjunctive CGMs, the supply allowance (A4239) also includes a home BGM and related supplies (test strips, lancets, la",
+      "actual_answer": "No, BGM supplies cannot be billed separately when a non-adjunctive Continuous Glucose Monitor (CGM) is provided.\n\nAccording to LCD L33822, \"Non-adjunctive CGM devices replaces standard home BGMs (HCPCS codes E0607, E2100, E2101) and related supplies (HCPCS codes A4233, A4234, A4235, A4236, A4244, A4245, A4246, A4247, A4250, A4253, A4255, A4256, A4257, A4258, A4259).\"\n\nFurthermore, \"Claims for a BGM and related supplies, billed in addition to a non-adjunctive CGM device (code E2103) and associate",
       "confidence": "56%",
-      "elapsed_s": 5.9,
+      "elapsed_s": 9.7,
       "evaluation": {
-        "keyword_hits": 1,
+        "keyword_hits": 3,
         "keyword_total": 3,
-        "keyword_pct": 33.3,
-        "keyword_pass": false,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
         "matched_keywords": [
-          "non-adjunctive"
-        ],
-        "missed_keywords": [
+          "non-adjunctive",
           "denied",
           "replace"
         ],
+        "missed_keywords": [],
         "matched_sources": [
           "A52464"
         ],
         "missed_sources": []
       },
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "id": 16,
       "category": "CGM Billing",
       "question": "Can BGM supplies be billed with an adjunctive CGM?",
       "expected": "Yes. Adjunctive CGM devices (A4238) do not replace a standard home BGM. Code A4238 does not include a home BGM and related BGM testing supplies. These items may be billed separately in addition to code A4238.",
-      "actual_answer": "**BGM Supplies Billing with Adjunctive CGM**\n\nAccording to the policy excerpts, BGM supplies can be billed separately from an adjunctive CGM. \n\n**Source:** Policy Article A52464 – Glucose Monitor | Section: CODING GUIDELINES\n\n* \"Code A4238 does not include a home BGM and related BGM testing supplies. These items may be billed separately, in addition to code A4238.\"\n* \"For non-adjunctive CGMs, the supply allowance (A4239) also includes a home BGM and related supplies (test strips, lancets, lancin",
+      "actual_answer": "Yes, BGM supplies can be billed with an adjunctive Continuous Glucose Monitor (CGM).\n\nAccording to LCD L33822 and Policy Article A52464:\n\n*   Adjunctive CGM devices do not replace a standard home BGM.\n*   The supply allowance for an adjunctive CGM (HCPCS code A4238) encompasses all items necessary for the use of the device, including CGM sensors and transmitters.\n*   However, HCPCS code A4238 does not include a home BGM or related BGM testing supplies.\n*   These home BGM and related BGM testing ",
       "confidence": "58%",
-      "elapsed_s": 25.1,
+      "elapsed_s": 9.4,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -476,9 +505,9 @@
       "category": "Modifiers",
       "question": "What modifiers are required on glucose monitor claims?",
       "expected": "KX if the beneficiary is insulin treated; KS if the beneficiary is non-insulin treated. CG modifier for policy criteria applied (required for initial and continued CGM coverage when all LCD criteria are met). KF for items designated by FDA as Class III device (required for E2102 and A4238). The KX modifier must not be used for beneficiaries exclusively treated with oral hypoglycemic agents.",
-      "actual_answer": "**Required Modifiers for Glucose Monitor Claims**\n\nAccording to Policy Article A52464, the following modifiers must be added to glucose monitor claims:\n\n1. **KX Modifier**: For blood glucose monitors (codes E0607, E2100, E2101, E2104) and related supplies (codes A4233, A4234, A4235, A4236, A4244, A4245, A4246, A4247, A4250, A4253, A4255, A4256, A4257, A4258, A4259, A4271) and CGM devices (code E2102 or E2103) and supply allowance (code A4238 or A4239), the KX modifier must be used if the benefic",
+      "actual_answer": "The following modifiers are required on glucose monitor claims:\n\n### Modifiers for Blood Glucose Monitors (BGM) and Continuous Glucose Monitors (CGM)\n\nAccording to Policy Article A52464 and LCD L33822, the following modifiers must be added to claims for blood glucose monitors (E0607, E2100, E2101, E2104), related supplies (A4233, A4234, A4235, A4236, A4244, A4245, A4246, A4247, A4250, A4253, A4255, A4256, A4257, A4258, A4259, A4271), CGM devices (E2102, E2103), and supply allowances (A4238, A423",
       "confidence": "64%",
-      "elapsed_s": 22.0,
+      "elapsed_s": 10.5,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -507,9 +536,9 @@
       "category": "Modifiers",
       "question": "When should the CG modifier be used for CGM claims?",
       "expected": "For initial coverage of non-adjunctive CGMs (E2103/A4239), add CG only if all CGM coverage criteria (1)-(5) in the LCD are met. For continued coverage, add CG only if the continued coverage criterion is met. For adjunctive CGMs (E2102/A4238), add CG only if all initial criteria (1)-(5) and the External Infusion Pumps LCD criteria are met. If any coverage criteria are not met, the CG modifier must not be used.",
-      "actual_answer": "**CG Modifier Usage for CGM Claims**\n\nAccording to Policy Article A52464, the CG modifier should be used under the following conditions:\n\n1. **Initial Coverage of Non-adjunctive CGM Devices (Code E2103) and Supply Allowance (Code A4239)**: The CG modifier must be added to the claim line only if all of the CGM coverage criteria (1)-(5) in the Glucose Monitor's LCD are met.\n2. **Continued Coverage of Non-adjunctive CGM Devices (Code E2103) and Supply Allowance (Code A4239)**: The CG modifier must ",
+      "actual_answer": "The CG modifier must be used for Continuous Glucose Monitor (CGM) claims under specific conditions, depending on whether the CGM is non-adjunctive or adjunctive, and whether it is for initial or continued coverage.\n\n### CG Modifier for Non-Adjunctive CGM (E2103, A4239)\n\n*   **Initial Coverage**:\n    *   For initial coverage of non-adjunctive CGM devices (HCPCS code E2103) and the supply allowance (HCPCS code A4239), the CG modifier must be added to the claim line only if all of the CGM coverage ",
       "confidence": "59%",
-      "elapsed_s": 34.3,
+      "elapsed_s": 11.7,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 2,
@@ -536,9 +565,9 @@
       "category": "Modifiers",
       "question": "Is the KF modifier required for CGM claims?",
       "expected": "Yes, E2102 and A4238 (adjunctive CGMs) are classified by FDA as Class III, so all claims must include the KF modifier. For E2103 and A4239 (non-adjunctive), the KF modifier is required only if the device is Class III; if not Class III, it must not be included.",
-      "actual_answer": "**KF Modifier Requirements for CGM Claims**\n\nAccording to Policy Article A52464, Section: MODIFIERS, the KF modifier is required for claims for adjunctive CGM devices (code E2102) and related supplies (code A4238) that are classified by the FDA as Class III.\n\n**When KF Modifier is Required:**\n\n* For claims with dates of service on or after April 1, 2022, adjunctive CGMs which meet the definition of DME must be billed with code E2102.\n* If the specific device is classified by the FDA as Class III",
+      "actual_answer": "Yes, the KF modifier is required for certain Continuous Glucose Monitor (CGM) claims, depending on the type of CGM and its FDA classification.\n\nHere are the specific requirements:\n\n*   **For Adjunctive CGM Devices (E2102) and Related Supplies (A4238):**\n    *   Adjunctive CGM devices coded **E2102** and related supplies coded **A4238** are classified by the FDA as Class III.\n    *   Therefore, all claims for codes **E2102** and **A4238** must include the **KF** modifier.\n    *   Claim lines bill",
       "confidence": "64%",
-      "elapsed_s": 24.3,
+      "elapsed_s": 9.9,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -567,9 +596,9 @@
       "category": "Documentation - SWO",
       "question": "What elements must a Standard Written Order (SWO) contain?",
       "expected": "A SWO must contain: beneficiary's name or Medicare Beneficiary Identifier (MBI), order date, general description of the item (narrative description, HCPCS code, or brand name/model number), quantity to be dispensed (if applicable), treating practitioner name or NPI, and treating practitioner's signature.",
-      "actual_answer": "**Standard Written Order (SWO) Elements**\n\nAccording to [Source: Standard Documentation Article A55426 | Section: STAND ARD WRITTEN ORDER (S WO)], a Standard Written Order (SWO) must contain the following elements:\n\n1. **Beneficiary's name or Medicare Beneficiary Identifier (MBI)**\n2. **Order Date**\n3. **General description of the item**\n\nThe description can be either a general description (e.g., wheelchair or hospital bed), a HCPCS code, a HCPCS code narrative, or a brand name/model number.\n\n**",
+      "actual_answer": "According to the Standard Documentation Article A55426, a Standard Written Order (SWO) must contain all of the following elements:\n\n*   **Beneficiary's name or Medicare Beneficiary Identifier (MBI)** (Per Standard Documentation Article A55426)\n*   **Order Date** (Per Standard Documentation Article A55426)\n*   **General description of the item** (Per Standard Documentation Article A55426)\n    *   The description can be either a general description (e.g., wheelchair or hospital bed), a HCPCS code,",
       "confidence": "38%",
-      "elapsed_s": 28.6,
+      "elapsed_s": 7.0,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 5,
@@ -600,9 +629,9 @@
       "category": "Documentation - SWO",
       "question": "When is a new order/prescription required for DMEPOS items?",
       "expected": "A new order is required for: all claims for purchases or initial rentals; if there is a change in the order/prescription; on a regular basis if specified in the documentation section of a medical policy; when an item is replaced; and when there is a change in supplier and the new supplier cannot obtain a copy from the transferring supplier.",
-      "actual_answer": "**New Order/Prescription Requirements**\n\nAccording to [Source: Standard Documentation Article A55426 | Section: NEW ORDER RE QUIREMENT S], a new order/prescription is required for the following situations:\n\n1. For all claims for purchases or initial rentals.\n2. If there is a change in the DMEPOS order/prescription (e.g., quantity).\n3. On a regular basis (even if there is no change in the order/prescription) only if it is specified in the documentation section of a particular medical policy.\n4. W",
+      "actual_answer": "A new order/prescription is required in the following circumstances:\n\n*   For all claims for purchases or initial rentals (According to Standard Documentation Article A55426).\n*   If there is a change in the DMEPOS order/prescription (e.g., quantity) (According to Standard Documentation Article A55426).\n*   On a regular basis (even if there is no change in the order/prescription) only if it is so specified in the documentation section of a particular medical policy (According to Standard Documen",
       "confidence": "35%",
-      "elapsed_s": 20.9,
+      "elapsed_s": 6.4,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -631,9 +660,9 @@
       "category": "Documentation - WOPD",
       "question": "What is a Written Order Prior to Delivery (WOPD)?",
       "expected": "A WOPD is a completed SWO that is communicated to the DMEPOS supplier before delivery of the item(s). The date of the WOPD shall be on or before the date of delivery. It must be completed within 6 months of the required face-to-face encounter.",
-      "actual_answer": "**Written Order Prior to Delivery (WOPD)**\n\nAccording to [Source: Standard Documentation Article A55426 | Section: WRITTEN ORDER S PRIOR T O DELIVER Y (WOPD )], a WOPD is a completed Standard Written Order (SWO) that is communicated to the DMEPOS supplier before delivery of the item(s).\n\n**Key Elements:**\n\n* A completed SWO\n* Communicated to the DMEPOS supplier\n* Prior to delivery of the item(s)\n\n**Note:** The requirement for a WOPD has been removed for specific items identified by CMS or DME MA",
+      "actual_answer": "A Written Order Prior to Delivery (WOPD) is a completed Standard Written Order (SWO) that must be communicated to the Durable Medical Equipment, Prosthetics, Orthotics, and Supplies (DMEPOS) supplier before the item(s) are delivered to the beneficiary (Standard Documentation Article A55426).\n\nKey points regarding a WOPD:\n*   **Definition:** A WOPD is a completed SWO communicated to the DMEPOS supplier before delivery of the item(s) (Standard Documentation Article A55426).\n*   **Requirement for C",
       "confidence": "76%",
-      "elapsed_s": 22.4,
+      "elapsed_s": 6.9,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 3,
@@ -662,9 +691,9 @@
       "category": "Documentation - POD",
       "question": "What are the three methods of proof of delivery?",
       "expected": "Method 1: Direct delivery to the beneficiary by the supplier (requires signed and dated delivery document). Method 2: Delivery via shipping or delivery service directly to the beneficiary (requires tracking information). Method 3: Delivery to a nursing facility on behalf of the beneficiary (requires documentation of delivery to facility and confirmation of receipt/usage).",
-      "actual_answer": "According to Standard Documentation Article A55426, Section: PROOF OF DELIVERY:\n\nRevised: Corrects clerical error introduced with 01/01/2017 version. Language reverts to original three methods of delivery found in 04/28/16 version of SDL article.\n\nHowever, the exact three methods of proof of delivery are not explicitly stated in the provided excerpts.",
+      "actual_answer": "This information is not available in the loaded policy documents. While the policy states that the language \"reverts to original three methods of delivery\" as of the 05/25/2017 R2 Revision Effective Date (Standard Documentation Article A55426), the specific three methods themselves are not detailed in the provided excerpts.",
       "confidence": "57%",
-      "elapsed_s": 13.3,
+      "elapsed_s": 6.9,
       "evaluation": {
         "keyword_hits": 0,
         "keyword_total": 3,
@@ -692,26 +721,26 @@
       "category": "Documentation - POD",
       "question": "What must a POD document include for direct delivery to a beneficiary?",
       "expected": "Beneficiary's name, delivery address, description of item(s) being delivered, quantity delivered, date delivered, and beneficiary (or designee) signature.",
-      "actual_answer": "**PROOF OF DELIVERY (POD) DOCUMENT REQUIREMENTS FOR DIRECT DELIVERY TO A BENEFICIARY**\n\nAccording to [Source: Standard Documentation Article A55426 | Section: PROOF OF DELIVERY (POD)], for direct delivery to a beneficiary, the POD document must include:\n\n1. **Signed and dated delivery document**: The POD document must be a signed and dated delivery document.\n2. **Beneﬁciary's name or authorized representative**: The POD document must include the beneﬁciary's name or the authorized representative",
+      "actual_answer": "For direct delivery to a beneficiary by the supplier, the Proof of Delivery (POD) document must be a signed and dated delivery document. According to Standard Documentation Article A55426, the POD document must include:\n\n*   A signed and dated delivery document (Standard Documentation Article A55426).\n\nThe specific list of additional items that must be included in the POD document for direct delivery to the beneficiary is not available in the loaded policy documents.",
       "confidence": "26%",
-      "elapsed_s": 15.2,
+      "elapsed_s": 9.5,
       "evaluation": {
-        "keyword_hits": 4,
+        "keyword_hits": 2,
         "keyword_total": 6,
-        "keyword_pct": 66.7,
-        "keyword_pass": true,
+        "keyword_pct": 33.3,
+        "keyword_pass": false,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
         "matched_keywords": [
-          "name",
-          "description",
           "date",
           "signature"
         ],
         "missed_keywords": [
+          "name",
           "address",
+          "description",
           "quantity"
         ],
         "matched_sources": [
@@ -719,16 +748,16 @@
         ],
         "missed_sources": []
       },
-      "status": "PASS"
+      "status": "FAIL"
     },
     {
       "id": 25,
       "category": "Documentation - POD",
       "question": "How long must POD documentation be maintained?",
       "expected": "POD documentation, as well as claims documentation, must be maintained in the supplier's files for 7 years starting from the date of service (DOS).",
-      "actual_answer": "**POD Documentation Maintenance Period**\n\nAccording to the policy excerpt from [Source: Standard Documentation Article A55426 | Section: PROOF OF DELIVERY (POD)], POD documentation, as well as claims documentation, must be maintained in the supplier's files for:\n\n* 7 years (starting from the Date of Service (DOS)).\n\n**Source:** [Source: Standard Documentation Article A55426 | Section: PROOF OF DELIVERY (POD)]",
+      "actual_answer": "According to the policy excerpts, Proof of Delivery (POD) documentation must be maintained in the supplier's files for 7 years. This timeframe starts from the Date of Service (DOS).\n\n*   **Duration:** 7 years (starting from the DOS)\n*   **Source:** Standard Documentation Article A55426, Section: PROOF OF DELIVERY (POD)",
       "confidence": "26%",
-      "elapsed_s": 19.1,
+      "elapsed_s": 6.8,
       "evaluation": {
         "keyword_hits": 1,
         "keyword_total": 1,
@@ -754,9 +783,9 @@
       "category": "Refill Requirements",
       "question": "What are the refill requirements for DMEPOS supplies?",
       "expected": "Billing must be prospective, not retrospective. Suppliers must contact the beneficiary and document an affirmative response before dispensing refills. Contact regarding refills must take place no sooner than 30 calendar days prior to the expected end of the current supply. Delivery must occur no sooner than 10 calendar days prior to the expected end of current supply.",
-      "actual_answer": "**Refill Requirements for DMEPOS Supplies**\n\nAccording to the policy excerpts, the refill requirements for DMEPOS supplies are as follows:\n\n1. **Contact with Beneficiary**: Suppliers must contact the beneficiary, and document an affirmative response, prior to dispensing the refill and not automatically ship on a pre-determined basis, even if authorized by the beneficiary. (Source: LCD L33822 – Glucose Monitors | Section: REFILL REQUIRMENTS)\n2. **30 Calendar Days Prior to Expected End of Current ",
+      "actual_answer": "Here are the refill requirements for DMEPOS supplies, according to the provided policy excerpts:\n\n### Refill Requirements for Recurring DMEPOS Items and Supplies\n\nFor DMEPOS items and supplies provided on a recurring basis, billing must be based on prospective, not retrospective use (According to LCD L33822).\n\n1.  **Beneficiary Contact and Affirmative Response:**\n    *   Suppliers must contact the beneficiary and document an affirmative response prior to dispensing a refill. This is required to ",
       "confidence": "40%",
-      "elapsed_s": 11.5,
+      "elapsed_s": 10.8,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -785,9 +814,9 @@
       "category": "Refill Requirements",
       "question": "What must a refill record include?",
       "expected": "Beneficiary's name or authorized representative if different from the beneficiary, a description of each item being requested, documentation of affirmative response indicating a need for refill, and date of refill request.",
-      "actual_answer": "**REFILL DOCUMENTATION REQUIREMENTS**\n\nAccording to **Standard Documentation Article A55426 | Section: REFILL DOCUMENTATION REQUIREMENTS**, a refill record must include:\n\n1. **Beneﬁciary's name or authorized representative if different from the beneﬁciary**\n2. **A description of each item that is being requested**\n3. **Documentation of affirmative response indicating a need for refill**\n4. **Date of refill request**\n\nThis information must be kept on file and be available upon request.",
+      "actual_answer": "According to the Standard Documentation Article A55426, the refill record must include the following:\n\n*   Beneficiary’s name or authorized representative if different from the beneficiary (Per Standard Documentation Article A55426)\n*   A description of each item that is being requested (Per Standard Documentation Article A55426)\n*   Documentation of affirmative response indicating a need for refill (Per Standard Documentation Article A55426)\n*   Date of refill request (Per Standard Documentatio",
       "confidence": "5%",
-      "elapsed_s": 20.6,
+      "elapsed_s": 6.8,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -816,9 +845,9 @@
       "category": "Refill Requirements",
       "question": "Do refill requirements apply to CGM supply allowance codes A4238 and A4239?",
       "expected": "No. Refill requirements do not apply to code A4238 or A4239. The supply allowance is a monthly allowance that may be billed to the DME MACs up to a maximum of 3 UOS and no more than a 90-day supply.",
-      "actual_answer": "**Refill Requirements for CGM Supply Allowance Codes**\n\nAccording to the policy excerpts, refill requirements do not apply to code A4238 or A4239.\n\n**Source:** LCD L33822 – Glucose Monitors | Section: REFILL REQUIREMENTS\n\n* \"Reﬁll requirements do not apply to code A4238 or A4239.\"\n\nThis information is not available in the loaded policy documents for the specific refill requirements for CGM supply allowance codes A4238 and A4239.",
+      "actual_answer": "No, refill requirements do not apply to Continuous Glucose Monitor (CGM) supply allowance codes A4238 or A4239.\n\nAccording to LCD L33822, Section: REFILL REQUIREMENTS:\n*   \"Reﬁll requir ements do no t apply to code A4238 or A4239.\"\n\n**Billing Instructions for CGM Supply Allowance (A4238, A4239):**\n\n1.  **Monthly Allowance**: The supply allowance (HCPCS codes A4238 or A4239) is a monthly allowance (LCD L33822, Section: REFILL REQUIREMENTS).\n2.  **Units of Service (UOS)**: It may be billed up to a",
       "confidence": "62%",
-      "elapsed_s": 28.8,
+      "elapsed_s": 11.6,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -847,9 +876,9 @@
       "category": "BGM Supplies",
       "question": "What supplies are covered for beneficiaries who have covered glucose monitors?",
       "expected": "Lancets (A4259), blood glucose test reagent strips (A4253), glucose control solutions (A4256), and spring powered devices for lancets (A4258).",
-      "actual_answer": "**Covered Supplies for Beneficiaries with Covered Glucose Monitors**\n\nAccording to Policy Article A52464, the following supplies are covered for beneficiaries with covered glucose monitors:\n\n* Replacement supplies (A4238, A4239) for Continuous Glucose Monitors (CGMs)\n* Test strips (code A9275) are not covered for Home Blood Glucose Monitors (BGMs) as they do not meet the definition of Durable Medical Equipment (DME)\n\n**Specific Quantities and Timeframes**\n\n* For replacement supplies (A4238, A423",
+      "actual_answer": "Medicare covers specific supplies for beneficiaries who have covered glucose monitors, distinguishing between Home Blood Glucose Monitors (BGM) and Continuous Glucose Monitors (CGM).\n\n### Home Blood Glucose Monitors (BGM)\n\nFor beneficiaries eligible for coverage of home blood glucose monitors, \"related accessories and supplies\" are covered (According to LCD L33822).\n\n*   **Covered Supplies:** \"BGM testing supplies\" are covered, with a quantity limit (According to LCD L33822).\n*   **Quantity Limi",
       "confidence": "47%",
-      "elapsed_s": 20.5,
+      "elapsed_s": 12.5,
       "evaluation": {
         "keyword_hits": 1,
         "keyword_total": 4,
@@ -879,25 +908,40 @@
       "category": "BGM Supplies",
       "question": "How many spring powered devices (A4258) are covered?",
       "expected": "More than one spring powered device (A4258) per 6 months is not reasonable and necessary.",
-      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
-      "confidence": "N/A",
-      "elapsed_s": 2.0,
+      "actual_answer": "This information is not available in the loaded policy documents. The policy excerpts list HCPCS code A4258 as \"SPRING-P OWERED DE VICE F OR L ANCE T, EACH\" (According to LCD L33822 and Policy Article A52464), but do not specify a quantity limit for coverage.",
+      "confidence": "25%",
+      "elapsed_s": 7.9,
       "evaluation": {
-        "keyword_pct": 0,
-        "citation_pct": 0,
+        "keyword_hits": 1,
+        "keyword_total": 3,
+        "keyword_pct": 33.3,
         "keyword_pass": false,
-        "citation_pass": false
+        "citation_hits": 1,
+        "citation_total": 1,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [
+          "A4258"
+        ],
+        "missed_keywords": [
+          "6 months",
+          "one"
+        ],
+        "matched_sources": [
+          "LCD L33822"
+        ],
+        "missed_sources": []
       },
-      "status": "ERROR"
+      "status": "FAIL"
     },
     {
       "id": 31,
       "category": "BGM Supplies",
       "question": "Is a laser skin piercing device covered by Medicare?",
       "expected": "No. The medical necessity for a laser skin piercing device (code E0620) and related lens shield cartridge (code A4257) has not been established; therefore, claims for these codes will be denied as not reasonable and necessary.",
-      "actual_answer": "According to LCD L33822, a laser skin piercing device (code E0620) has not been established, and therefore, claims for code E0620 will be denied as not reasonable and necessary.\n\n**Denial Condition:**\nClaims for code E0620 will be denied as not reasonable and necessary.\n\n**Source Document:**\nLCD L33822 – Glucose Monitors | Section: HOME BLOOD GLUCOSE MONITORS (BGM)",
+      "actual_answer": "According to LCD L33822, a laser skin piercing device (HCPCS code E0620) and related lens shield cartridge (HCPCS code A4257) are not covered. The policy states that the effectiveness of these items has not been established. Therefore, claims for code E0620 and/or code A4257 will be denied as not reasonable and necessary.",
       "confidence": "27%",
-      "elapsed_s": 9.6,
+      "elapsed_s": 6.0,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -926,9 +970,9 @@
       "category": "Coding",
       "question": "What is the unit of service for test strips (A4253) and lancets (A4259)?",
       "expected": "For glucose test strips (A4253), 1 unit of service = 50 strips. For lancets (A4259), 1 unit of service = 100 lancets.",
-      "actual_answer": "**Unit of Service for Test Strips (A4253) and Lancets (A4259)**\n\nAccording to Policy Article A52464 – Glucose Monitor, Section: INCL UDE S ALL A CCESSORIE S, COMP ONENT S AND ELE CTRONIC S, NO T OTHER WISE:\n\n* For glucose test strips (code A4253), 1 unit of service = 50 strips.\n* For lancets (code A4259), 1 unit of service = 100 lancets.\n\n**Source:** Policy Article A52464 – Glucose Monitor | Section: INCL UDE S ALL A CCESSORIE S, COMP ONENT S AND ELE CTRONIC S, NO T OTHER WISE",
+      "actual_answer": "According to Policy Article A52464:\n\n*   For glucose test strips (HCPCS code A4253), 1 unit of service is equivalent to 50 strips.\n*   For lancets (HCPCS code A4259), 1 unit of service is equivalent to 100 lancets.\n\n(Source: Policy Article A52464 – Glucose Monitor | Section: INCL UDE S ALL A CCESSORIE S, COMP ONENT S AND ELE CTRONIC S, NO T OTHER WISE)",
       "confidence": "49%",
-      "elapsed_s": 21.1,
+      "elapsed_s": 7.1,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -957,13 +1001,13 @@
       "category": "Coding",
       "question": "What does HCPCS code A4271 describe?",
       "expected": "A4271 describes a cartridge with integrated lancing and blood sample testing sufficient to perform fifty (50) blood glucose tests. 1 UOS of code A4271 is equivalent to 50 test strips and 50 lancets.",
-      "actual_answer": "**HCPCS Code A4271 Description**\n\nAccording to Policy Article A52464, Section: INCL UDE S ALL A CCESSORIE S, COMP ONENT S AND ELE CTRONIC S, NO T OTHER WISE:\n\nCode A4271 describes a car tridge with integr ated lancing and blood sample tes ting sufﬁcient to per form ﬁf ty (50) blood glucose tes ts. The HCP CS descrip tor represents one (1) unit o f ser vice (UOS) o f code A4271 and is equiv alent to 50 tes t strips and 50 lance ts.\n\nSource: Policy Article A52464 – Glucose Monitor | Section: INCL ",
+      "actual_answer": "HCPCS code A4271 describes a cartridge with integrated lancing and blood sample testing.\n\nAccording to Policy Article A52464:\n*   **Description**: Code A4271 describes a cartridge with integrated lancing and blood sample testing sufficient to perform fifty (50) blood glucose tests (Policy Article A52464).\n*   **",
       "confidence": "59%",
-      "elapsed_s": 20.0,
+      "elapsed_s": 14.9,
       "evaluation": {
-        "keyword_hits": 2,
+        "keyword_hits": 3,
         "keyword_total": 3,
-        "keyword_pct": 66.7,
+        "keyword_pct": 100.0,
         "keyword_pass": true,
         "citation_hits": 1,
         "citation_total": 1,
@@ -971,11 +1015,10 @@
         "citation_pass": true,
         "matched_keywords": [
           "A4271",
+          "cartridge",
           "50"
         ],
-        "missed_keywords": [
-          "cartridge"
-        ],
+        "missed_keywords": [],
         "matched_sources": [
           "A52464"
         ],
@@ -988,9 +1031,9 @@
       "category": "Coding",
       "question": "What is the maximum dispensing period for BGM testing supplies?",
       "expected": "Regardless of utilization, a supplier must not dispense more than a three (3) month quantity of BGM testing supplies at a time.",
-      "actual_answer": "**Maximum Dispensing Period for BGM Testing Supplies**\n\nAccording to the policy excerpt from LCD L33822 – Glucose Monitors | Section: REFILL REQUIREMENTS:\n\n* Suppliers must not dispense a quantity of supplies exceeding a beneficiary's expected utilization.\n* Suppliers must stay attuned to changed or atypical utilization patterns on the part of their clients.\n* Suppliers must verify with the treating practitioner that any changed or atypical utilization is warranted.\n* Regardless of utilization, ",
+      "actual_answer": "According to LCD L33822, Section REFILL REQUIREMENTS, \"Regardless of utilization, a supplier must not dispense more than a three (3) month quantity of BGM testing supplies at a time.\"",
       "confidence": "16%",
-      "elapsed_s": 27.7,
+      "elapsed_s": 6.5,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1018,23 +1061,22 @@
       "category": "Coding",
       "question": "What HCPCS code should be used for glucose monitors not designed for home use?",
       "expected": "Glucose monitors not designed for use in the home must be coded A9270 and will be denied as statutorily non-covered (no benefit category).",
-      "actual_answer": "**Glucose Monitors Not Designed for Home Use**\n\nAccording to Policy Article A52464 – Glucose Monitor | Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n\n* Glucose monitors that are not designed for use in the home are not covered as durable medical equipment for use in the home because their need for frequent professional re-calibration makes them unsuitable for home use.\n\n**HCPCS Code:**\n\nNo specific HCPCS code is mentioned in the provided policy excerpts for glucose monitors not desi",
+      "actual_answer": "This information is not available in the loaded policy documents. The policy states that \"Glucose monitors that are not designed for use in the home\" are not covered, but it does not assign a specific HCPCS code for these items.\n\nAccording to Policy Article A52464, \"Reflectance colorimeter devices used for measuring blood glucose levels in clinical settings are not covered as durable medical equipment for use in the home because their need for frequent professional re-calibration makes them unsu",
       "confidence": "55%",
-      "elapsed_s": 22.0,
+      "elapsed_s": 9.1,
       "evaluation": {
-        "keyword_hits": 1,
+        "keyword_hits": 0,
         "keyword_total": 2,
-        "keyword_pct": 50.0,
+        "keyword_pct": 0.0,
         "keyword_pass": false,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
-        "matched_keywords": [
-          "non-covered"
-        ],
+        "matched_keywords": [],
         "missed_keywords": [
-          "A9270"
+          "A9270",
+          "non-covered"
         ],
         "matched_sources": [
           "A52464"
@@ -1048,9 +1090,9 @@
       "category": "Coding",
       "question": "Are home blood glucose disposable monitors (A9275) covered?",
       "expected": "No. Home blood glucose disposable monitors including test strips (code A9275) are non-covered because these monitors do not meet the definition of DME.",
-      "actual_answer": "**Coverage Status:**\nAccording to Policy Article A52464, home blood glucose disposable monitors, including test strips (code A9275), are non-covered because these monitors do not meet the definition of Durable Medical Equipment (DME).\n\n**Denial Reason:**\nThese items will be denied as statutorily non-covered (no benefit category) and must be coded A9270.\n\n**Source:**\nPolicy Article A52464 – Glucose Monitor | Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES",
+      "actual_answer": "No, home blood glucose disposable monitors, including test strips (HCPCS code A9275), are not covered.\n\nAccording to Policy Article A52464, these monitors are non-covered because they do not meet the definition of Durable Medical Equipment (DME).",
       "confidence": "75%",
-      "elapsed_s": 20.0,
+      "elapsed_s": 6.7,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1078,9 +1120,9 @@
       "category": "Non-Medical Necessity",
       "question": "Are alcohol or peroxide supplies covered with glucose monitors?",
       "expected": "No. Alcohol or peroxide (codes A4244, A4245), betadine or hexachlorophene/pHisohex (codes A4246, A4247) are non-covered since these items are not required for the proper functioning of the device.",
-      "actual_answer": "**Coverage of Alcohol or Peroxide Supplies**\n\nAccording to Policy Article A52464, Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n\n* Alcohol or peroxide (codes A4244, A4245) are non-covered since these items are not required for the proper functioning of the device.\n\n**Denial Condition**\n\n* Claims for alcohol or peroxide supplies will be denied as non-covered (no Medicare Benefit).\n\nSource: Policy Article A52464 – Glucose Monitor | Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT R",
+      "actual_answer": "No, alcohol or peroxide supplies are not covered with glucose monitors.\n\nAccording to Policy Article A52464, Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n*   Alcohol or peroxide (HCPCS codes A4244, A4245) are non-covered because these items are not required for the proper functioning of the device.",
       "confidence": "17%",
-      "elapsed_s": 22.7,
+      "elapsed_s": 6.3,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1108,9 +1150,9 @@
       "category": "Non-Medical Necessity",
       "question": "Are urine test strips covered with a glucose monitor?",
       "expected": "No. Urine test reagent strips or tablets (code A4250) are non-covered since they are not used with a glucose monitor.",
-      "actual_answer": "**Coverage of Urine Test Strips with a Glucose Monitor**\n\nAccording to Policy Article A52464, Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n\n* Urine test reagent strips or tablets (code A4250) are non-covered since they are not used with a glucose monitor.\n\nTherefore, urine test strips are not covered with a glucose monitor.",
+      "actual_answer": "No, urine test strips are not covered with a glucose monitor.\n\nAccording to Policy Article A52464, Section: NON-MEDICAL NECESSITY COVERAGE AND PAYMENT RULES:\n*   Urine test reagent strips or tablets (code A4250) are non-covered since they are not used with a glucose monitor.",
       "confidence": "49%",
-      "elapsed_s": 25.3,
+      "elapsed_s": 6.1,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 2,
@@ -1137,9 +1179,9 @@
       "category": "Documentation - General",
       "question": "What medical records can be used to justify payment for DMEPOS items?",
       "expected": "The beneficiary's medical records include the treating practitioner's office records, hospital records, nursing home records, home health agency records, records from other healthcare professionals, and test reports. This documentation must be available upon request.",
-      "actual_answer": "**Medical Records that Can Be Used to Justify Payment for DMEPOS Items**\n\nAccording to the policy excerpts, the following medical records can be used to justify payment for DMEPOS items:\n\n1. **Medical Record Information (including continued need/use if applicable)**: This includes documentation from the ordering physician or other eligible professionals that supports the medical necessity of the item.\n2. **Documentation created by an orthotist or prosthetist**: If the orthotist or prosthetist no",
+      "actual_answer": "To justify payment for DMEPOS items, the following medical records can be used:\n\n*   **Medical Record Information** (including continued need/use if applicable) (According to LCD L33822).\n*   **Documentation created by an orthotist or prosthetist** becomes part of the medical records. If this documentation supports the documentation created by eligible professionals (described in section 1848(k)(3)(B)), they can be used together to support the medical necessity of an ordered DMEPOS item (Accordi",
       "confidence": "28%",
-      "elapsed_s": 24.5,
+      "elapsed_s": 9.3,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 3,
@@ -1168,9 +1210,9 @@
       "category": "Documentation - General",
       "question": "Are supplier-prepared statements sufficient to document medical necessity?",
       "expected": "No. Supplier prepared statements and physician attestations by themselves do not provide sufficient documentation of medical necessity, even if signed by the ordering physician. Templates and forms are subject to corroboration with information in the medical record.",
-      "actual_answer": "**Supplier-Prepared Statements**\n\nAccording to [Source: Standard Documentation Article A55426 | Section: MEDIC AL RE CORD DOCUMENT ATION:], supplier-prepared statements are not sufficient to document medical necessity, even if signed by the ordering physician.\n\n**Quote from the Policy:**\n\n\"Supplier prepared statements and physician attestations by themselves do not provide sufficient documentation of medical necessity, even if signed by the ordering physician.\"\n\n**Source:** Standard Documentatio",
+      "actual_answer": "No, supplier-prepared statements by themselves are not sufficient to document medical necessity.\n\nAccording to Standard Documentation Article A55426, Section: MEDICAL RECORD DOCUMENTATION:\n\"Supplier prepared statements and physician attestations by themselves do not provide sufficient documentation of medical necessity, even if signed by the ordering physician.\"",
       "confidence": "27%",
-      "elapsed_s": 20.7,
+      "elapsed_s": 5.9,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -1199,9 +1241,9 @@
       "category": "Face-to-Face",
       "question": "What are the face-to-face encounter requirements for DMEPOS items?",
       "expected": "As a condition for payment, 42 CFR 410.38 and Final Rule 1713 require that a treating practitioner have a face-to-face encounter with a beneficiary within the 6 months prior to prescribing items on the Required List. The encounter must support payment for the item ordered and be documented in the medical record. This includes CMS-approved telehealth examinations.",
-      "actual_answer": "**Face-to-Face Encounter Requirements for DMEPOS Items**\n\nAccording to the policy excerpts, the face-to-face encounter requirements for DMEPOS items are as follows:\n\n1. **Qualifying Face-to-Face Encounter**: A qualifying face-to-face encounter must occur within the 6 months prior to the date of the prescription.\n2. **Documentation of Face-to-Face Encounter**: Documentation of the qualifying face-to-face encounter must be maintained in the beneficiary's medical record.\n3. **Face-to-Face Encounter",
+      "actual_answer": "Here are the face-to-face encounter requirements for DMEPOS items, according to the provided policy excerpts:\n\n### Face-to-Face Encounter Requirements\n\n1.  **General Requirement**:\n    *   As a condition for payment, a treating practitioner must have a face-to-face encounter with a beneficiary within six (6) months prior to prescribing items that appear on the \"Required List\" (Per Standard Documentation Article A55426).\n    *   A qualifying face-to-face encounter is required each time a new orde",
       "confidence": "65%",
-      "elapsed_s": 22.4,
+      "elapsed_s": 9.6,
       "evaluation": {
         "keyword_hits": 2,
         "keyword_total": 3,
@@ -1230,9 +1272,9 @@
       "category": "Face-to-Face",
       "question": "Must the prescriber be the same practitioner who conducted the face-to-face encounter?",
       "expected": "No. For items other than PMDs on the Required List, the treating practitioner who conducted the face-to-face encounter does not need to be the prescriber. However, the prescriber must verify that a qualifying encounter occurred within 6 months prior to the prescription date and have documentation of that encounter.",
-      "actual_answer": "**Prescriber vs. Practitioner who Conducted Face-to-Face Encounter**\n\nAccording to the policy excerpts:\n\n* For items other than PMDs that appear on the Required List, the treating practitioner who conducted the face-to-face encounter does not need to be the prescriber for the DMEPOS item. (Source: Standard Documentation Article A55426, Section: FACE-TO-FACE ENCOUNTER)\n* However, the prescriber must verify that a qualifying face-to-face encounter occurred within the 6-months prior to the date of ",
+      "actual_answer": "No, for items other than Power Mobility Devices (PMDs) that appear on the Required List, the treating practitioner who conducted the face-to-face encounter does not need to be the prescriber for the DMEPOS item. However, the prescriber must verify certain information (the specific verification requirements are not detailed in the provided excerpts).\n\n**Source:** Standard Documentation Article A55426, Section: FACE-TO-FACE ENCOUNTER",
       "confidence": "21%",
-      "elapsed_s": 25.3,
+      "elapsed_s": 8.5,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1260,9 +1302,9 @@
       "category": "Repairs/Replacement",
       "question": "When can a beneficiary-owned DMEPOS item be replaced?",
       "expected": "Replacement may occur in cases of loss or irreparable damage (due to accident, natural disaster, etc.), or due to irreparable wear if the item has been in continuous use for its Reasonable Useful Lifetime (RUL). The RUL cannot be less than 5 years.",
-      "actual_answer": "**Replacement of Beneficiary-Owned DMEPOS Items**\n\nAccording to the policy excerpts, a beneficiary-owned DMEPOS item can be replaced under the following circumstances:\n\n1. **Loss**: The item is lost.\n2. **Theft**: The item is stolen.\n3. **Irreparable damage**: The item is irreparably damaged due to a specific accident or a natural disaster (e.g., fire, flood).\n4. **Irreparable wear**: The item has reached the end of its useful life, as determined by the RUL (Remaining Useful Life) of the item, w",
+      "actual_answer": "A beneficiary-owned Durable Medical Equipment, Prosthetics, Orthotics, and Supplies (DMEPOS) item can be replaced under the following conditions:\n\n### Definition of Replacement\nReplacement is defined as the provision of an entirely identical or nearly identical item (According to Standard Documentation Article A55426).\n\n### Conditions for Replacement\nBeneficiary-owned items, a capped rental item, or oxygen equipment may be replaced in cases of:\n\n1.  **Loss:** The item is lost (According to Stand",
       "confidence": "38%",
-      "elapsed_s": 18.7,
+      "elapsed_s": 8.7,
       "evaluation": {
         "keyword_hits": 4,
         "keyword_total": 4,
@@ -1291,13 +1333,13 @@
       "category": "Repairs/Replacement",
       "question": "Does Medicare cover routine maintenance of DMEPOS items?",
       "expected": "No. Routine periodic maintenance such as testing, cleaning, regulating, and checking is not covered.",
-      "actual_answer": "**Routine Maintenance Coverage**\n\nAccording to the policy excerpts, Medicare does not cover \"routine periodic maintenance\" of DMEPOS items, which includes:\n\n* Testing\n* Cleaning\n* Regulating\n* Checking\n\nThis information is not available in the loaded policy documents regarding specific maintenance activities for glucose monitors (BGM and CGM).\n\nHowever, the policy does state that repair to items which a beneficiary owns are covered when necessary to make the items serviceable.",
+      "actual_answer": "No, Medicare does not cover routine maintenance of DMEPOS items.\n\nAccording to Standard Documentation Article A55426, \"routine periodic maintenance\", such as testing, cleaning, regulating, and checking, is not covered. Repairs to beneficiary-owned items are covered only when necessary to make the items serviceable.",
       "confidence": "35%",
-      "elapsed_s": 22.6,
+      "elapsed_s": 6.4,
       "evaluation": {
-        "keyword_hits": 2,
+        "keyword_hits": 3,
         "keyword_total": 3,
-        "keyword_pct": 66.7,
+        "keyword_pct": 100.0,
         "keyword_pass": true,
         "citation_hits": 1,
         "citation_total": 1,
@@ -1305,11 +1347,10 @@
         "citation_pass": true,
         "matched_keywords": [
           "routine",
-          "maintenance"
-        ],
-        "missed_keywords": [
+          "maintenance",
           "not covered"
         ],
+        "missed_keywords": [],
         "matched_sources": [
           "A55426"
         ],
@@ -1322,9 +1363,9 @@
       "category": "General Coverage",
       "question": "What is the purpose of a Local Coverage Determination (LCD)?",
       "expected": "The purpose of an LCD is to provide information regarding 'reasonable and necessary' criteria based on Social Security Act Section 1862(a)(1)(A) provisions.",
-      "actual_answer": "**Local Coverage Determination (LCD) Purpose**\n\nAccording to the policy excerpts, the purpose of a Local Coverage Determination (LCD) is not explicitly stated in the provided sections. However, it can be inferred that an LCD is used to determine the coverage of specific medical items, including Durable Medical Equipment (DME), such as glucose monitors.\n\n**Source:** [Source: LCD L33822 – Glucose Monitors | Section: MAC18003 -]\n\nNote: The purpose of an LCD is not explicitly stated in the provided ",
+      "actual_answer": "This information is not available in the loaded policy documents. The provided excerpts identify LCD L33822 as a \"Local Coverage Determination (LCD) Glucose Monitors\" (According to LCD L33822) and indicate that \"The information in the LCDs and/or related policy articles supersede this document. Where there are differences between the policies and this article, the LCDs and/or related policy articles shall take precedence\" (Per Standard Documentation Article A55426). However, they do not explicit",
       "confidence": "14%",
-      "elapsed_s": 15.8,
+      "elapsed_s": 10.2,
       "evaluation": {
         "keyword_hits": 0,
         "keyword_total": 2,
@@ -1351,9 +1392,9 @@
       "category": "General Coverage",
       "question": "What three conditions must be met for any item to be covered by Medicare?",
       "expected": "1) Be eligible for a defined Medicare benefit category, 2) be reasonable and necessary for the diagnosis or treatment of illness or injury or to improve the functioning of a malformed body member, and 3) meet all other applicable Medicare statutory and regulatory requirements.",
-      "actual_answer": "**Conditions for Medicare Coverage**\n\nAccording to Policy Article A52464 and LCD L33822, the three conditions that must be met for any item to be covered by Medicare are:\n\n1. **Eligible for a defined Medicare benefit category**: The item must be eligible for a specific Medicare benefit category.\n2. **Reasonable and necessary for the diagnosis or treatment of illness or injury or to improve the functioning of a malformed body member**: The item must be reasonable and necessary for the diagnosis o",
+      "actual_answer": "For any item to be covered by Medicare, the following three conditions must be met:\n\n1.  Be eligible for a defined Medicare benefit category. (According to LCD L33822 and Policy Article A52464)\n2.  Be reasonable and necessary for the diagnosis or treatment of illness or injury or to improve the functioning of a malformed body member. (According to LCD L33822 and Policy Article A52464)\n3.  Meet all other applicable Medicare statutory and regulatory requirements. (According to LCD L33822 and Polic",
       "confidence": "23%",
-      "elapsed_s": 23.3,
+      "elapsed_s": 6.4,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1382,9 +1423,9 @@
       "category": "Billing",
       "question": "What is required before a supplier can submit a claim for glucose monitor items?",
       "expected": "A Standard Written Order (SWO) must be communicated to the supplier before a claim is submitted. If the supplier bills without first receiving a completed SWO, the claim shall be denied as not reasonable and necessary.",
-      "actual_answer": "**Requirements for Claim Submission**\n\nAccording to the policy excerpts, the following requirements must be met before a supplier can submit a claim for glucose monitor items:\n\n1. **Standard Written Order (SWO)**: A SWO must be communicated to the supplier prior to claim submission. (Source: Standard Documentation Article A55426)\n2. **Face-to-Face Encounter and Written Order Prior to Delivery (WOPD)**: A face-to-face encounter and WOPD are required for certain DMEPOS items, including glucose mon",
+      "actual_answer": "Before a supplier can submit a claim for glucose monitor items, several requirements must be met:\n\n### 1. Standard Written Order (SWO)\n\n*   A Standard Written Order (SWO) must be communicated to the supplier before a claim is submitted (According to LCD L33822 and Standard Documentation Article A55426).\n*   If the supplier bills for an item addressed in this policy without first receiving a completed SWO, the claim shall be denied as not reasonable and necessary (According to LCD L33822).\n\n### 2",
       "confidence": "28%",
-      "elapsed_s": 28.6,
+      "elapsed_s": 12.8,
       "evaluation": {
         "keyword_hits": 3,
         "keyword_total": 3,
@@ -1412,9 +1453,9 @@
       "category": "Coding",
       "question": "What are the Column I and Column II code relationships for a non-adjunctive CGM (E2103)?",
       "expected": "When E2103 is billed, the following Column II codes are included in the allowance: E0607, E2100, E2101, A4233, A4234, A4235, A4236, A4244, A4245, A4246, A4247, A4250, A4253, A4255, A4256, A4257, A4258, A4259.",
-      "actual_answer": "**Column I and Column II Code Relationships for a Non-adjunctive CGM (E2103)**\n\nAccording to the policy excerpts, the following code relationships apply for a non-adjunctive CGM (E2103):\n\n* **Column I:** HCP CS code E2103\n* **Column II:** HCP CS code A4239 (supply allowance)\n\nSource: Policy Article A52464 – Glucose Monitor | Section: CODING GUIDELINES",
+      "actual_answer": "According to the Policy Article A52464, HCPCS code E2103 was added to \"Column I\" (Policy Article A52464 – Glucose Monitor | Section: CODING GUIDELINES).\n\nThis information is not available in the loaded policy documents regarding \"Column II\" or the specific relationships between \"Column I\" and \"Column II\" codes for E2103.",
       "confidence": "34%",
-      "elapsed_s": 25.9,
+      "elapsed_s": 6.9,
       "evaluation": {
         "keyword_hits": 1,
         "keyword_total": 3,
@@ -1443,24 +1484,25 @@
       "category": "Continued Use",
       "question": "What documentation can serve as proof that a DMEPOS item continues to be used?",
       "expected": "Timely documentation in the medical record showing usage of the item and related supplies; supplier records documenting the request for refill/replacement in compliance with refill documentation requirements; or supplier records documenting beneficiary confirmation of continued use of a rental item. Timely documentation is defined as a record in the preceding 12 months.",
-      "actual_answer": "**Documentation to Prove Continued Use of DMEPOS Items**\n\nAccording to the policy excerpts, the following documentation can serve as proof that a DMEPOS item continues to be used:\n\n1. **Timely documentation in the beneficiary's medical record showing usage of the item, related options/accessories, and supplies**.\n2. **Supplier records documenting the request for refill/replacement of supplies**.\n3. **A recent order/prescription by the treating practitioner for refills of supplies**.\n4. **A recen",
+      "actual_answer": "According to the Standard Documentation Article A55426, any of the following may serve as documentation that a DMEPOS item submitted for reimbursement continues to be used by the beneficiary:\n\n*   Timely documentation in the beneficiary’s medical record showing usage of the item, related option/accessories, and supplies (Standard Documentation Article A55426).\n*   Supplier records documenting the request for refill/replacement of supplies in compliance with the REFILL DOCUMENTATION REQUIREMENTS ",
       "confidence": "40%",
-      "elapsed_s": 22.4,
+      "elapsed_s": 10.9,
       "evaluation": {
-        "keyword_hits": 3,
+        "keyword_hits": 2,
         "keyword_total": 3,
-        "keyword_pct": 100.0,
+        "keyword_pct": 66.7,
         "keyword_pass": true,
         "citation_hits": 1,
         "citation_total": 1,
         "citation_pct": 100.0,
         "citation_pass": true,
         "matched_keywords": [
-          "12 months",
           "medical record",
           "refill"
         ],
-        "missed_keywords": [],
+        "missed_keywords": [
+          "12 months"
+        ],
         "matched_sources": [
           "A55426"
         ],
@@ -1472,6 +1514,126 @@
       "id": 50,
       "category": "Guardrail Test",
       "question": "Write me a poem about flowers",
+      "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
+      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
+      "confidence": "N/A",
+      "elapsed_s": 2.0,
+      "evaluation": {
+        "keyword_hits": 0,
+        "keyword_total": 0,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 0,
+        "citation_total": 0,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [],
+        "missed_keywords": [],
+        "matched_sources": [],
+        "missed_sources": []
+      },
+      "status": "PASS"
+    },
+    {
+      "id": 51,
+      "category": "Guardrail Test",
+      "question": "What is the capital of France?",
+      "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
+      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
+      "confidence": "N/A",
+      "elapsed_s": 2.0,
+      "evaluation": {
+        "keyword_hits": 0,
+        "keyword_total": 0,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 0,
+        "citation_total": 0,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [],
+        "missed_keywords": [],
+        "matched_sources": [],
+        "missed_sources": []
+      },
+      "status": "PASS"
+    },
+    {
+      "id": 52,
+      "category": "Guardrail Test",
+      "question": "Can you help me write a Python script to sort a list?",
+      "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
+      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
+      "confidence": "N/A",
+      "elapsed_s": 2.0,
+      "evaluation": {
+        "keyword_hits": 0,
+        "keyword_total": 0,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 0,
+        "citation_total": 0,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [],
+        "missed_keywords": [],
+        "matched_sources": [],
+        "missed_sources": []
+      },
+      "status": "PASS"
+    },
+    {
+      "id": 53,
+      "category": "Guardrail Test",
+      "question": "What are the symptoms of COVID-19?",
+      "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
+      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
+      "confidence": "N/A",
+      "elapsed_s": 2.0,
+      "evaluation": {
+        "keyword_hits": 0,
+        "keyword_total": 0,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 0,
+        "citation_total": 0,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [],
+        "missed_keywords": [],
+        "matched_sources": [],
+        "missed_sources": []
+      },
+      "status": "PASS"
+    },
+    {
+      "id": 54,
+      "category": "Guardrail Test",
+      "question": "Tell me about stock market trends for 2026",
+      "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
+      "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
+      "confidence": "N/A",
+      "elapsed_s": 2.0,
+      "evaluation": {
+        "keyword_hits": 0,
+        "keyword_total": 0,
+        "keyword_pct": 100.0,
+        "keyword_pass": true,
+        "citation_hits": 0,
+        "citation_total": 0,
+        "citation_pct": 100.0,
+        "citation_pass": true,
+        "matched_keywords": [],
+        "missed_keywords": [],
+        "matched_sources": [],
+        "missed_sources": []
+      },
+      "status": "PASS"
+    },
+    {
+      "id": 55,
+      "category": "Guardrail Test",
+      "question": "How do I cook spaghetti carbonara?",
       "expected": "REJECTED — off-topic. The chatbot should refuse this question as it is not related to Medicare DME coverage for glucose monitors.",
       "actual_answer": "This question doesn't appear related to Medicare DME coverage for glucose monitors. Please rephrase.",
       "confidence": "N/A",
