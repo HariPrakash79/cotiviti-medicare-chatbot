@@ -29,12 +29,13 @@ from PyPDF2 import PdfReader
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from rank_bm25 import BM25Okapi
 import faiss
-import google.generativeai as genai
+from google import genai
+from google.genai import types as genai_types
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════════════
-PDF_DIR = Path(__file__).parent
+PDF_DIR = Path(__file__).parent / "files"
 
 PDF_FILES = {
     "LCD - Glucose Monitors (L33822).pdf":
@@ -52,7 +53,7 @@ BM25_TOP_K = 15
 RERANK_TOP_K = 6
 EMBED_MODEL_NAME = "all-MiniLM-L6-v2"
 CROSS_ENCODER_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -492,8 +493,7 @@ def generate_response(
     query_type: str,
     conversation_ctx: str,
 ) -> str:
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(GEMINI_MODEL)
+    client = genai.Client(api_key=api_key)
 
     context_block = "\n\n---\n\n".join(
         f"[Source: {c['source']} | Section: {c.get('section', 'N/A')}]\n{c['text']}"
@@ -506,10 +506,7 @@ def generate_response(
     if conversation_ctx:
         conv_block = f"\nRECENT CONVERSATION (for context on follow-up questions):\n{conversation_ctx}\n"
 
-    prompt = f"""{BASE_SYSTEM_PROMPT}
-{type_instructions}
-
-POLICY DOCUMENT EXCERPTS:
+    prompt = f"""POLICY DOCUMENT EXCERPTS:
 {context_block}
 {conv_block}
 USER QUESTION:
@@ -517,8 +514,23 @@ USER QUESTION:
 
 ANSWER:"""
 
-    response = model.generate_content(prompt)
-    return response.text
+    resp = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=prompt,
+        config=genai_types.GenerateContentConfig(
+            system_instruction=f"{BASE_SYSTEM_PROMPT}{type_instructions}",
+            temperature=0.2,
+            max_output_tokens=2048,
+        ),
+    )
+    # resp.text raises ValueError if the response was blocked by safety filters
+    if not resp.candidates:
+        raise RuntimeError("Gemini returned no candidates (response may have been blocked)")
+    candidate = resp.candidates[0]
+    if not candidate.content or not candidate.content.parts:
+        finish = getattr(candidate, "finish_reason", "unknown")
+        raise RuntimeError(f"Gemini response empty (finish_reason={finish})")
+    return resp.text
 
 
 # ═══════════════════════════════════════════════════════════════════════════
