@@ -21,16 +21,20 @@ Architecture:
 """
 
 import streamlit as st
+import os
 import re
 import time
 import numpy as np
 from pathlib import Path
-from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+import pdfplumber
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from rank_bm25 import BM25Okapi
 import faiss
 from google import genai
 from google.genai import types as genai_types
+
+load_dotenv()
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CONFIGURATION
@@ -119,15 +123,17 @@ class Guardrails:
     @classmethod
     def assess_confidence(cls, retrieval_scores: list[float]) -> dict:
         if not retrieval_scores:
-            return {"level": "low", "score": 0.0, "color": "red"}
+            return {"level": "low", "score": 0, "pct": "0%", "color": "red"}
         avg = sum(retrieval_scores) / len(retrieval_scores)
         top = max(retrieval_scores)
         combined = 0.6 * top + 0.4 * avg
-        if combined >= 0.55:
-            return {"level": "high", "score": combined, "color": "green"}
-        if combined >= 0.35:
-            return {"level": "medium", "score": combined, "color": "orange"}
-        return {"level": "low", "score": combined, "color": "red"}
+        # Normalize cross-encoder scores (typically -12 to +12) to 0-100%
+        pct = max(0, min(100, int((combined + 5) / 15 * 100)))
+        if pct >= 60:
+            return {"level": "high", "score": pct, "pct": f"{pct}%", "color": "green"}
+        if pct >= 35:
+            return {"level": "medium", "score": pct, "pct": f"{pct}%", "color": "orange"}
+        return {"level": "low", "score": pct, "pct": f"{pct}%", "color": "red"}
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -177,13 +183,8 @@ def detect_section(line: str) -> str | None:
 
 
 def extract_pdf_text(pdf_path: Path) -> str:
-    reader = PdfReader(str(pdf_path))
-    pages = []
-    for page in reader.pages:
-        text = page.extract_text()
-        if text:
-            pages.append(text)
-    return "\n\n".join(pages)
+    with pdfplumber.open(str(pdf_path)) as pdf:
+        return "\n\n".join(p.extract_text() or "" for p in pdf.pages)
 
 
 def smart_chunk(text: str, source: str) -> list[dict]:
@@ -591,16 +592,20 @@ def render_ui():
         st.title("Medicare DME Policy Assistant")
         st.caption("Advanced RAG Chatbot — Cotiviti POC v2.0")
 
-        st.subheader("API Key")
-        api_key = st.text_input(
-            "Google Gemini API Key",
-            type="password",
-            help="Free key: https://aistudio.google.com/apikey",
-        )
-        if not api_key:
-            st.info("Get a free key at [Google AI Studio](https://aistudio.google.com/apikey)")
+        env_api_key = os.getenv("GEMINI_API_KEY", "")
+        if env_api_key:
+            api_key = env_api_key
         else:
-            st.success("Key loaded")
+            st.subheader("API Key")
+            api_key = st.text_input(
+                "Google Gemini API Key",
+                type="password",
+                help="Free key: https://aistudio.google.com/apikey",
+            )
+            if not api_key:
+                st.info("Get a free key at [Google AI Studio](https://aistudio.google.com/apikey)")
+            else:
+                st.success("Key loaded")
 
         st.divider()
         st.subheader("Knowledge Base")
@@ -689,7 +694,7 @@ def render_ui():
 
                 st.markdown(
                     f'<span class="query-type-badge" style="background:{qtype_color}">{qtype_label}</span>'
-                    f'<span class="confidence-badge" style="background:{conf_color_hex}">Confidence: {conf.get("level", "?")} ({conf.get("score", 0):.2f})</span>',
+                    f'<span class="confidence-badge" style="background:{conf_color_hex}">Confidence: {conf.get("level", "?")} ({conf.get("pct", "?")})</span>',
                     unsafe_allow_html=True,
                 )
             if msg.get("sources"):
@@ -785,7 +790,7 @@ def render_ui():
         st.markdown(
             f'<span class="query-type-badge" style="background:{qtype_color}">{qtype_label}</span>'
             f'<span class="confidence-badge" style="background:{conf_color_hex}">'
-            f'Confidence: {confidence["level"]} ({confidence["score"]:.2f})</span>'
+            f'Confidence: {confidence["level"]} ({confidence["pct"]})</span>'
             f'&nbsp;&nbsp;<span style="font-size:0.78rem;color:#888;">Retrieval: {retrieval_time:.2f}s | Generation: {gen_time:.2f}s</span>',
             unsafe_allow_html=True,
         )
