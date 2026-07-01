@@ -32,7 +32,7 @@ User Query
 [Conversation Context] -> Follow-up detection + chat history injection
   |
   v
-[Groq LLM] -------------> Llama 3.3 70B with type-specific system prompts
+[Gemini LLM] -----------> Gemini 2.5 Flash with type-specific system prompts
   |
   v
 [Confidence Scoring] ----> Retrieval quality assessment (shown as %)
@@ -65,7 +65,7 @@ Grounded in three official CMS/Medicare policy documents:
 
 ### Prerequisites
 - Python 3.10+
-- A free Groq API key ([get one here](https://console.groq.com/keys))
+- A free Gemini API key ([get one here](https://aistudio.google.com/apikey))
 
 ### Installation
 
@@ -79,7 +79,7 @@ pip install -r requirements.txt
 Create a `.env` file in the `Chatbot/` directory:
 
 ```
-GROQ_API_KEY=gsk_your_key_here
+GEMINI_API_KEY=your_key_here
 ```
 
 Or enter the key directly in the sidebar when running the app.
@@ -105,23 +105,35 @@ python run_tests.py --ids 1 5 9  # run specific questions
 
 | Metric | Score |
 |---|---|
-| Overall Pass Rate | 37/50 (74%) |
-| Keyword Accuracy | 73.2% avg |
-| Citation Accuracy | 94.0% |
-| Guardrail Test | PASS |
+| Overall Pass Rate | 54/55 (98.2%) |
+| Keyword Accuracy | 97.6% avg |
+| Citation Accuracy | 100.0% |
+| Guardrail Tests | 6/6 PASS |
+| Errors | 0 |
 
 **Category Breakdown:**
 
 | Category | Pass Rate | Keyword % | Citation % |
 |---|---|---|---|
+| BGM Coverage | 4/4 (100%) | 100% | 100% |
+| BGM Supplies | 3/3 (100%) | 100% | 100% |
 | BGM Utilization | 4/4 (100%) | 100% | 100% |
+| Billing | 1/1 (100%) | 100% | 100% |
+| CGM Billing | 4/4 (100%) | 100% | 100% |
+| CGM Coverage | 4/4 (100%) | 100% | 100% |
+| Coding | 5/6 (83%) | 88.9% | 100% |
+| Continued Use | 1/1 (100%) | 100% | 100% |
+| Documentation - General | 2/2 (100%) | 83.3% | 100% |
+| Documentation - POD | 3/3 (100%) | 100% | 100% |
+| Documentation - SWO | 2/2 (100%) | 100% | 100% |
+| Documentation - WOPD | 1/1 (100%) | 66.7% | 100% |
+| Face-to-Face | 2/2 (100%) | 100% | 100% |
+| General Coverage | 2/2 (100%) | 100% | 100% |
+| Guardrail Test | 6/6 (100%) | 100% | 100% |
 | Modifiers | 3/3 (100%) | 100% | 100% |
-| Refill Requirements | 3/3 (100%) | 100% | 100% |
 | Non-Medical Necessity | 2/2 (100%) | 100% | 100% |
-| Coding | 4/6 (67%) | 75% | 100% |
-| Documentation - SWO | 2/2 (100%) | 80% | 100% |
-| Face-to-Face | 2/2 (100%) | 83% | 100% |
-| Repairs/Replacement | 2/2 (100%) | 83% | 100% |
+| Refill Requirements | 3/3 (100%) | 100% | 100% |
+| Repairs/Replacement | 2/2 (100%) | 100% | 100% |
 
 ## Example Questions
 
@@ -143,7 +155,7 @@ python run_tests.py --ids 1 5 9  # run specific questions
 | Keyword Search | BM25 (rank-bm25) |
 | Vector Search | FAISS |
 | Re-ranking | Cross-Encoder (ms-marco-MiniLM-L-6-v2) |
-| LLM | Groq — Llama 3.3 70B Versatile |
+| LLM | Google Gemini 2.5 Flash |
 | Language | Python 3.10+ |
 
 ## Project Structure
@@ -159,7 +171,7 @@ Chatbot/
 |   |-- Article - Glucose Monitor - Policy Article (A52464).pdf
 |   |-- Article - Standard Documentation Requirements... (A55426).pdf
 |-- run_tests.py           # Automated test runner
-|-- test_questions.json    # 50 test Q&A pairs
+|-- test_questions.json    # 55 test Q&A pairs
 |-- test_results.json      # Latest test results
 |-- requirements.txt
 |-- .env                   # API key (gitignored)

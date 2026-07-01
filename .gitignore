@@ -4,3 +4,4 @@ __pycache__/
 .cache/
 .claude/
 Intern_Assessment_Directions.pdf
+claude_context.md

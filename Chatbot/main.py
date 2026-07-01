@@ -23,7 +23,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from PyPDF2 import PdfReader
+import pdfplumber
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from rank_bm25 import BM25Okapi
 import faiss
@@ -191,8 +191,8 @@ def _detect_section(line: str) -> str | None:
 
 
 def extract_pdf_text(path: Path) -> str:
-    reader = PdfReader(str(path))
-    return "\n\n".join(p.extract_text() or "" for p in reader.pages)
+    with pdfplumber.open(str(path)) as pdf:
+        return "\n\n".join(p.extract_text() or "" for p in pdf.pages)
 
 
 def _split_large(text: str, source: str, section: str) -> list[dict]:
@@ -414,6 +414,13 @@ def generate(query: str, sources: list[dict], api_key: str,
             max_output_tokens=2048,
         ),
     )
+    # resp.text raises ValueError if the response was blocked by safety filters
+    if not resp.candidates:
+        raise RuntimeError("Gemini returned no candidates (response may have been blocked)")
+    candidate = resp.candidates[0]
+    if not candidate.content or not candidate.content.parts:
+        finish = getattr(candidate, "finish_reason", "unknown")
+        raise RuntimeError(f"Gemini response empty (finish_reason={finish})")
     return resp.text
 
 
