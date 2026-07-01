@@ -4,6 +4,8 @@ A production-grade RAG (Retrieval-Augmented Generation) chatbot that answers que
 
 **Cotiviti Intern Assessment | Topic 3: Content Management in Health Care**
 
+**Live Demo:** [chatbot-cotiviti.streamlit.app](https://chatbot-cotiviti.streamlit.app/) — bring your own free [Gemini API key](https://aistudio.google.com/apikey)
+
 ---
 
 ## Architecture
@@ -87,10 +89,16 @@ Or enter the key directly in the sidebar when running the app.
 ### Run
 
 ```bash
-python main.py
+python main.py              # FastAPI backend + custom HTML/Tailwind UI
 ```
 
 Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+Alternatively, run the Streamlit version (same RAG pipeline, used for the [live demo](https://chatbot-cotiviti.streamlit.app/)):
+
+```bash
+streamlit run app.py
+```
 
 ## Testing
 
@@ -150,7 +158,7 @@ python run_tests.py --ids 1 5 9  # run specific questions
 |---|---|
 | Backend | FastAPI + Uvicorn |
 | Frontend | HTML5 + Tailwind CSS + vanilla JavaScript |
-| PDF Parsing | PyPDF2 |
+| PDF Parsing | pdfplumber |
 | Embeddings | sentence-transformers (all-MiniLM-L6-v2) |
 | Keyword Search | BM25 (rank-bm25) |
 | Vector Search | FAISS |
@@ -163,7 +171,7 @@ python run_tests.py --ids 1 5 9  # run specific questions
 ```
 Chatbot/
 |-- main.py                # FastAPI backend + RAG pipeline
-|-- app.py                 # Streamlit version (alternative)
+|-- app.py                 # Streamlit version (deployed as the live demo)
 |-- static/
 |   |-- index.html         # Custom frontend
 |-- files/
