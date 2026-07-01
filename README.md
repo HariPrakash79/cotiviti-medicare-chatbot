@@ -6,6 +6,8 @@ A production-grade RAG (Retrieval-Augmented Generation) chatbot that answers que
 
 **Live Demo:** [chatbot-cotiviti.streamlit.app](https://chatbot-cotiviti.streamlit.app/) — bring your own free [Gemini API key](https://aistudio.google.com/apikey)
 
+**Video Recording, Presentation & Report:** [Google Drive](https://drive.google.com/file/d/17Kj-si-QnF5V8WtsRWgAds3SXycCc-ZK/view?usp=drive_link)
+
 ---
 
 ## Architecture
